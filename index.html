@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whisky Store</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(130deg, #050014, #14002e, #09001f);
+  background-size: 400% 400%;
+  animation: bg 14s ease infinite;
+  color: #fff;
+}
+
+@keyframes bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* TEXT LOGO */
+.logo {
+  text-align: center;
+  margin: 35px 0;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: #fff;
+  text-shadow:
+    0 0 10px #7f5cff,
+    0 0 25px #7f5cff,
+    0 0 50px #00e0ff;
+  animation: neon 2s infinite alternate;
+}
+
+@keyframes neon {
+  from {
+    text-shadow:
+      0 0 5px #7f5cff,
+      0 0 20px #7f5cff,
+      0 0 40px #00e0ff;
+  }
+  to {
+    text-shadow:
+      0 0 15px #00e0ff,
+      0 0 35px #7f5cff,
+      0 0 70px #00e0ff;
+  }
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 25px 0;
+  text-shadow: 0 0 15px #7f5cff;
+}
+
+.payment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.pay {
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(127,92,255,0.4);
+  backdrop-filter: blur(10px);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 0 30px rgba(127,92,255,0.25);
+  transition: transform .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.price {
+  margin: 8px 0;
+  opacity: .9;
+}
+
+.buy {
+  margin-top: 15px;
+  padding: 12px;
+  text-align: center;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #7f5cff, #00e0ff);
+  color: #000;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,224,255,.7);
+}
+
+.footer {
+  text-align: center;
+  opacity: .5;
+  margin: 40px 0 10px;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-box {
+  background: #120022;
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 0 40px #7f5cff;
+}
+
+.popup button {
+  margin: 10px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.go {
+  background: linear-gradient(90deg,#00e0ff,#7f5cff);
+}
+
+.cancel {
+  background: #333;
+  color: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="logo">WHISKY</div>
+
+  <h1>💳 Payment Methods</h1>
+  <div class="payment">
+    <div class="pay">IBAN</div>
+    <div class="pay">Western Union</div>
+    <div class="pay">Revolut</div>
+    <div class="pay">Binance</div>
+    <div class="pay">Giftcard</div>
+    <div class="pay">Shopier</div>
+    <div class="pay">Itemsatis</div>
+    <div class="pay">Papara</div>
+  </div>
+
+  <h2>🎮 Critical Ops — EXTERNAL</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Daily</h3>
+      <div class="price">Non-Root: 200₺ — $7</div>
+      <div class="price">Root: 100₺ — $5</div>
+      <div class="price">Emulator: 200₺ — $7</div>
+      <div class="buy" onclick="openPopup()">BUY</div>
+    </div>
+
+    <div class="card">
+      <h3>Weekly</h3>
+      <div class="price">Non-Root: 400₺ — $20</div>
+      <div class="price">Root: 300₺ — $15</div>
+      <div class="price">Emulator: 400₺ — $20</div>
+      <div class="buy" onclick="openPopup()">BUY</div>
+    </div>
+  </div>
+
+  <h2>🔐 Critical Ops — INTERNAL</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Daily</h3>
+      <div class="price">Root: 70₺ — $3</div>
+      <div class="price">Emulator: 100₺ — $3</div>
+      <div class="buy" onclick="openPopup()">BUY</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    All purchases are handled via Discord.
+  </div>
+
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h3>Continue to Discord?</h3>
+    <button class="go" onclick="goDiscord()">YES</button>
+    <button class="cancel" onclick="closePopup()">CANCEL</button>
+  </div>
+</div>
+
+<script>
+function openPopup() {
+  document.getElementById("popup").style.display = "flex";
+}
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+function goDiscord() {
+  window.location.href = "https://discord.gg/whisky";
+}
+</script>
+
+</body>
+  </html>

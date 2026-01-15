@@ -7,69 +7,37 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-
 body{
   min-height:100vh;
   background:radial-gradient(circle at top,#12002a,#050014,#020008);
   color:#fff;
   overflow-x:hidden;
 }
-
-/* MOVING CLOUD BACKGROUND */
 .clouds{
-  position:fixed;
-  inset:0;
-  background:
-    url("https://www.transparenttextures.com/patterns/cloudy-day.png");
-  opacity:.15;
-  animation:moveClouds 120s linear infinite;
-  z-index:-1;
+  position:fixed;inset:0;
+  background:url("https://www.transparenttextures.com/patterns/cloudy-day.png");
+  opacity:.15;animation:move 120s linear infinite;z-index:-1;
 }
-@keyframes moveClouds{
-  from{background-position:0 0}
-  to{background-position:4000px 0}
-}
+@keyframes move{from{background-position:0 0}to{background-position:4000px 0}}
 
 .container{max-width:1200px;margin:auto;padding:20px}
-
-/* LOGO TEXT */
 .logo{
-  text-align:center;
-  margin:35px 0;
-  font-size:46px;
-  font-weight:900;
-  letter-spacing:6px;
-  text-shadow:
-    0 0 15px #7f5cff,
-    0 0 40px #00e0ff;
-  animation:pulse 3s ease-in-out infinite;
-}
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.04)}
+  text-align:center;margin:35px 0;
+  font-size:46px;font-weight:900;letter-spacing:6px;
+  text-shadow:0 0 15px #7f5cff,0 0 40px #00e0ff;
 }
 
-/* TITLES */
-.external-title{
-  color:#00e0ff;
-  text-shadow:0 0 15px #00e0ff;
-}
-.internal-title{
-  color:#ff4dd2;
-  text-shadow:0 0 15px #ff4dd2;
-}
 h2{text-align:center;margin:25px 0}
+.external-title{color:#00e0ff;text-shadow:0 0 15px #00e0ff}
+.internal-title{color:#ff4dd2;text-shadow:0 0 15px #ff4dd2}
 
-/* CARDS */
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
-  margin-bottom:45px;
+  gap:22px;margin-bottom:45px;
 }
 .card{
-  padding:22px;
-  border-radius:20px;
+  padding:22px;border-radius:20px;
   background:rgba(255,255,255,.06);
   backdrop-filter:blur(6px);
   transition:.3s;
@@ -88,103 +56,53 @@ h2{text-align:center;margin:25px 0}
 .card h3{margin-bottom:10px}
 .price{margin:6px 0;opacity:.9}
 
-/* BUY BUTTON */
 .buy{
-  margin-top:15px;
-  padding:12px;
-  border-radius:16px;
-  font-weight:bold;
-  text-align:center;
-  cursor:pointer;
+  margin-top:15px;padding:12px;border-radius:16px;
+  font-weight:bold;text-align:center;cursor:pointer;color:#000;
 }
-.external .buy{
-  background:linear-gradient(90deg,#00e0ff,#00ffa6);
-  color:#000;
-}
-.internal .buy{
-  background:linear-gradient(90deg,#ff4dd2,#b66bff);
-  color:#000;
-}
+.external .buy{background:linear-gradient(90deg,#00e0ff,#00ffa6)}
+.internal .buy{background:linear-gradient(90deg,#ff4dd2,#b66bff)}
 
-/* PAYMENT METHODS */
 .payment{
-  margin:45px auto;
-  padding:25px;
-  max-width:700px;
-  text-align:center;
-  border-radius:22px;
-  background:rgba(255,255,255,.07);
+  margin:45px auto;padding:25px;max-width:700px;text-align:center;
+  border-radius:22px;background:rgba(255,255,255,.07);
   box-shadow:0 0 35px rgba(127,92,255,.6);
 }
-.payment h2{
-  margin-bottom:18px;
-  color:#ffd700;
-  text-shadow:0 0 15px #ffd700;
-}
-.pay-grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:14px;
-}
+.payment h2{margin-bottom:18px;color:#ffd700;text-shadow:0 0 15px #ffd700}
+.pay-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
 .pay{
-  padding:10px 16px;
-  border-radius:14px;
+  padding:10px 16px;border-radius:14px;
   background:rgba(0,0,0,.45);
   box-shadow:0 0 12px rgba(255,255,255,.25);
 }
 
-/* CLOUDFLARE BADGE */
 .cf{
-  margin:35px auto 10px;
-  max-width:260px;
-  text-align:center;
-  padding:10px;
-  border-radius:14px;
+  margin:35px auto 10px;max-width:260px;text-align:center;
+  padding:10px;border-radius:14px;
   background:rgba(0,0,0,.5);
   box-shadow:0 0 20px #ff7a00;
-  color:#ffb000;
-  font-weight:bold;
+  color:#ffb000;font-weight:bold;
 }
 
-/* POPUP */
 .popup{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  display:none;
-  align-items:center;
-  justify-content:center;
+  position:fixed;inset:0;background:rgba(0,0,0,.75);
+  display:none;align-items:center;justify-content:center;
 }
 .popup-box{
-  background:#120022;
-  padding:28px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 0 40px #7f5cff;
+  background:#120022;padding:28px;border-radius:20px;
+  text-align:center;box-shadow:0 0 40px #7f5cff;
 }
 .popup button{
-  margin:10px;
-  padding:12px 26px;
-  border:none;
-  border-radius:14px;
-  font-weight:bold;
-  cursor:pointer;
+  margin:10px;padding:12px 26px;border:none;border-radius:14px;
+  font-weight:bold;cursor:pointer;
 }
-.go{
-  background:linear-gradient(90deg,#00e0ff,#7f5cff);
-  color:#000;
-}
-.cancel{
-  background:#333;
-  color:#fff;
-}
+.go{background:linear-gradient(90deg,#00e0ff,#7f5cff);color:#000}
+.cancel{background:#333;color:#fff}
 </style>
 </head>
 
 <body>
 <div class="clouds"></div>
-
 <div class="container">
 
 <div class="logo">WHSKY</div>
@@ -195,7 +113,7 @@ h2{text-align:center;margin:25px 0}
 
 <div class="card external">
 <h3>Daily</h3>
-<div class="price">Non-Root: 200₺ — $7</div>
+<div class="price">No Root (Need vPhoneOS VIP): 200₺ — $7</div>
 <div class="price">Root: 100₺ — $5</div>
 <div class="price">Emulator: 200₺ — $7</div>
 <div class="buy" onclick="openPopup()">BUY</div>
@@ -203,9 +121,25 @@ h2{text-align:center;margin:25px 0}
 
 <div class="card external">
 <h3>Weekly</h3>
-<div class="price">Non-Root: 400₺ — $20</div>
+<div class="price">No Root (Need vPhoneOS VIP): 400₺ — $20</div>
 <div class="price">Root: 300₺ — $15</div>
 <div class="price">Emulator: 400₺ — $20</div>
+<div class="buy" onclick="openPopup()">BUY</div>
+</div>
+
+<div class="card external">
+<h3>Monthly</h3>
+<div class="price">No Root (Need vPhoneOS VIP): 1000₺ — $40</div>
+<div class="price">Root: 700₺ — $25</div>
+<div class="price">Emulator: 800₺ — $40</div>
+<div class="buy" onclick="openPopup()">BUY</div>
+</div>
+
+<div class="card external">
+<h3>Lifetime</h3>
+<div class="price">No Root (Need vPhoneOS VIP): 3500₺ — $90</div>
+<div class="price">Root: 3000₺ — $80</div>
+<div class="price">Emulator: 3500₺ — $90</div>
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
 
@@ -224,7 +158,7 @@ h2{text-align:center;margin:25px 0}
 
 <div class="card internal">
 <h3>Weekly</h3>
-<div class="price">Non-Root: 250₺ — $10</div>
+<div class="price">No Root: 250₺ — $10</div>
 <div class="price">Root: 200₺ — $5</div>
 <div class="price">Emulator: 250₺ — $7</div>
 <div class="buy" onclick="openPopup()">BUY</div>
@@ -232,7 +166,7 @@ h2{text-align:center;margin:25px 0}
 
 <div class="card internal">
 <h3>Monthly</h3>
-<div class="price">Non-Root: 650₺ — $20</div>
+<div class="price">No Root: 650₺ — $20</div>
 <div class="price">Root: 550₺ — $15</div>
 <div class="price">Emulator: 600₺ — $17</div>
 <div class="buy" onclick="openPopup()">BUY</div>
@@ -240,7 +174,6 @@ h2{text-align:center;margin:25px 0}
 
 </div>
 
-<!-- PAYMENT METHODS -->
 <div class="payment">
 <h2>💳 PAYMENT METHODS</h2>
 <div class="pay-grid">
@@ -259,7 +192,6 @@ h2{text-align:center;margin:25px 0}
 
 </div>
 
-<!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-box">
     <h3>Continue to Discord?</h3>
@@ -269,15 +201,9 @@ h2{text-align:center;margin:25px 0}
 </div>
 
 <script>
-function openPopup(){
-  document.getElementById("popup").style.display="flex";
-}
-function closePopup(){
-  document.getElementById("popup").style.display="none";
-}
-function goDiscord(){
-  window.location.href="https://discord.gg/whisky";
-}
+function openPopup(){document.getElementById("popup").style.display="flex"}
+function closePopup(){document.getElementById("popup").style.display="none"}
+function goDiscord(){window.location.href="https://discord.gg/whisky"}
 </script>
 
 </body>

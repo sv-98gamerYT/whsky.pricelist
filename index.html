@@ -7,89 +7,76 @@
 
 <style>
 :root{
---neon1:#00eaff;
---neon2:#a855ff;
---bg:#05000d;
+--n1:#00eaff;--n2:#a855ff;--bg:#060014;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
 body{
-background:radial-gradient(circle at top,#12002a,var(--bg));
+background:radial-gradient(circle at top,#14002e,var(--bg));
 color:#fff;
 }
 .container{max-width:1200px;margin:auto;padding:24px}
-h2{text-align:center;margin:50px 0 20px}
 .logo{
-text-align:center;
-font-size:52px;
-font-weight:900;
-letter-spacing:6px;
-text-shadow:0 0 30px var(--neon1),0 0 60px var(--neon2);
-margin:40px 0;
+text-align:center;font-size:52px;font-weight:900;
+letter-spacing:6px;margin:30px 0;
+text-shadow:0 0 30px var(--n1),0 0 60px var(--n2)
+}
+.counter{
+text-align:center;margin-bottom:20px;
+font-size:14px;opacity:.85
 }
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:22px;
+display:grid;gap:22px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
 }
 .card{
 background:rgba(255,255,255,.06);
-border-radius:22px;
-padding:22px;
+padding:22px;border-radius:22px;
 backdrop-filter:blur(10px);
-transition:.3s;
 }
-.card:hover{transform:translateY(-6px)}
-.external{border:1px solid var(--neon1);box-shadow:0 0 25px rgba(0,234,255,.4)}
-.internal{border:1px solid var(--neon2);box-shadow:0 0 25px rgba(168,85,255,.4)}
+.external{border:1px solid var(--n1)}
+.internal{border:1px solid var(--n2)}
 .buy{
-margin-top:14px;
-padding:12px;
-border-radius:16px;
-text-align:center;
-font-weight:700;
-cursor:pointer;
-color:#000;
+margin-top:12px;padding:12px;
+border-radius:16px;text-align:center;
+font-weight:700;cursor:pointer;color:#000
 }
 .external .buy{background:linear-gradient(90deg,#00eaff,#00ffa6)}
 .internal .buy{background:linear-gradient(90deg,#a855ff,#ff77ff)}
-.badge{
-display:inline-block;
-padding:6px 10px;
-border-radius:999px;
-font-size:12px;
-background:rgba(0,0,0,.6);
-margin:6px 0;
-}
 .section{margin:70px 0}
-.center{text-align:center}
+h2{text-align:center;margin-bottom:26px}
+
+/* Reviews */
+.review-box{
+background:rgba(0,0,0,.4);
+padding:20px;border-radius:18px
+}
+.star{font-size:22px;cursor:pointer;color:#555}
+.star.active{color:gold}
+.review{
+background:rgba(255,255,255,.06);
+padding:14px;border-radius:14px;margin-top:10px
+}
+
+/* Popup */
 .popup{
-position:fixed;inset:0;
-display:none;
+position:fixed;inset:0;display:none;
 align-items:center;justify-content:center;
 background:rgba(0,0,0,.8)
 }
 .popup-box{
-background:#120022;
-padding:30px;
-border-radius:22px;
-box-shadow:0 0 40px var(--neon2);
-text-align:center
+background:#120022;padding:28px;
+border-radius:22px;text-align:center
 }
 .popup button{
-margin:10px;
-padding:12px 26px;
-border:none;
-border-radius:14px;
-font-weight:700;
-cursor:pointer
+margin:10px;padding:12px 26px;
+border:none;border-radius:14px;
+font-weight:700;cursor:pointer
 }
 .go{background:linear-gradient(90deg,#00eaff,#a855ff)}
 .cancel{background:#333;color:#fff}
 .footer{
-opacity:.6;
-text-align:center;
-margin:50px 0 20px;
-font-size:13px
+opacity:.6;text-align:center;
+margin:60px 0 20px;font-size:13px
 }
 </style>
 </head>
@@ -99,17 +86,21 @@ font-size:13px
 
 <div class="logo">WHSKY</div>
 
+<div class="counter">
+👁 Visitors: <span id="visits">0</span> • 🟢 Status: Online • 🎟 24/7 Ticket Support
+</div>
+
+<!-- EXTERNAL -->
+<div class="section">
 <h2>🎮 Critical Ops Hack (External)</h2>
 <div class="grid">
 <div class="card external">
 <h3>🕒 Daily</h3>
-<div class="badge">No Root need vPhoneOS VIP</div>
 <p>📱 Non-Root: 200₺ — $7</p>
 <p>🔓 Root: 100₺ — $5</p>
 <p>🖥 Emulator: 200₺ — $7</p>
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
-
 <div class="card external">
 <h3>📆 Weekly</h3>
 <p>📱 Non-Root: 400₺ — $20</p>
@@ -117,7 +108,6 @@ font-size:13px
 <p>🖥 Emulator: 400₺ — $20</p>
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
-
 <div class="card external">
 <h3>🗓 Monthly</h3>
 <p>📱 Non-Root: 1000₺ — $40</p>
@@ -125,7 +115,6 @@ font-size:13px
 <p>🖥 Emulator: 800₺ — $40</p>
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
-
 <div class="card external">
 <h3>♾ Lifetime</h3>
 <p>📱 Non-Root: 3500₺ — $90</p>
@@ -134,7 +123,10 @@ font-size:13px
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
 </div>
+</div>
 
+<!-- INTERNAL -->
+<div class="section">
 <h2>🔐 Critical Ops Hack (Internal)</h2>
 <div class="grid">
 <div class="card internal">
@@ -143,7 +135,6 @@ font-size:13px
 <p>🖥 Emulator: 130₺ — $3</p>
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
-
 <div class="card internal">
 <h3>📆 Weekly</h3>
 <p>📱 Non-Root: 250₺ — $10</p>
@@ -151,7 +142,6 @@ font-size:13px
 <p>🖥 Emulator: 250₺ — $7</p>
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
-
 <div class="card internal">
 <h3>🗓 Monthly</h3>
 <p>📱 Non-Root: 650₺ — $20</p>
@@ -160,42 +150,28 @@ font-size:13px
 <div class="buy" onclick="openPopup()">BUY</div>
 </div>
 </div>
-
-<h2>🛡 Protection & Support</h2>
-<div class="grid">
-<div class="card">🛡 Advanced Protection System (UI)</div>
-<div class="card">👁 Live Monitoring Status</div>
-<div class="card">🎟 24/7 Ticket Support</div>
-<div class="card">⏱ Avg Response Time: &lt;10 min</div>
-<div class="card">🔐 Private Build Access</div>
-<div class="card">🟢 System Status: Operational</div>
 </div>
 
-<h2>💳 Payment Methods</h2>
-<div class="grid center">
-<div class="card">💳 Card</div>
-<div class="card">🏦 IBAN</div>
-<div class="card">🔁 Revolut</div>
-<div class="card">🪙 Binance</div>
-<div class="card">🎮 Gift Card</div>
-<div class="card">💎 Papara</div>
+<!-- REVIEWS -->
+<div class="section">
+<h2>⭐ User Reviews</h2>
+<div class="review-box">
+<div id="stars"></div>
+<textarea id="reviewText" placeholder="Write your review..." style="width:100%;margin-top:10px;border-radius:10px;padding:10px"></textarea>
+<div class="buy" style="margin-top:10px" onclick="addReview()">Submit Review</div>
+<div id="reviewList"></div>
 </div>
-
-<h2>💬 User Feedback (Demo)</h2>
-<div class="grid">
-<div class="card">★★★★★ “Fast support & clean UI”</div>
-<div class="card">★★★★★ “Looks premium and stable”</div>
-<div class="card">★★★★★ “Answered my ticket in minutes”</div>
 </div>
 
 <div class="footer">
-⚠️ This website is a UI / landing page demonstration.  
-All texts and features are visual representations only.  
+⚠️ UI / landing page demonstration.  
+All features are visual representations only.  
 © WHSKY
 </div>
 
 </div>
 
+<!-- POPUP -->
 <div class="popup" id="popup">
 <div class="popup-box">
 <h3>Continue to Discord?</h3>
@@ -205,9 +181,54 @@ All texts and features are visual representations only.
 </div>
 
 <script>
+// VISITS
+let visits = localStorage.getItem("visits") || 0;
+visits++;
+localStorage.setItem("visits", visits);
+document.getElementById("visits").innerText = visits;
+
+// POPUP
 function openPopup(){popup.style.display="flex"}
 function closePopup(){popup.style.display="none"}
+
+// STARS
+let rating = 0;
+const starBox = document.getElementById("stars");
+for(let i=1;i<=5;i++){
+let s=document.createElement("span");
+s.innerText="★"; s.className="star";
+s.onclick=()=>{rating=i;updateStars()};
+starBox.appendChild(s);
+}
+function updateStars(){
+[...starBox.children].forEach((s,i)=>{
+s.classList.toggle("active",i<rating)
+})
+}
+
+// REVIEWS
+const list=document.getElementById("reviewList");
+let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+function render(){
+list.innerHTML="";
+reviews.forEach(r=>{
+let d=document.createElement("div");
+d.className="review";
+d.innerHTML="⭐".repeat(r.star)+"<br>"+r.text;
+list.appendChild(d);
+})
+}
+function addReview(){
+let text=document.getElementById("reviewText").value;
+if(!rating||!text)return;
+reviews.push({star:rating,text});
+localStorage.setItem("reviews",JSON.stringify(reviews));
+rating=0;updateStars();
+document.getElementById("reviewText").value="";
+render();
+}
+render();
 </script>
 
 </body>
-</html>
+  </html>

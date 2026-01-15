@@ -1,234 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>WHSKY</title>
-
 <style>
-:root{
---n1:#00eaff;--n2:#a855ff;--bg:#060014;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial}
-body{
-background:radial-gradient(circle at top,#14002e,var(--bg));
-color:#fff;
-}
+:root{--n1:#00eaff;--n2:#a855ff;--bg:#060014}
+*{box-sizing:border-box;font-family:Segoe UI,Arial}
+body{margin:0;background:radial-gradient(circle at top,#14002e,var(--bg));color:#fff}
 .container{max-width:1200px;margin:auto;padding:24px}
-.logo{
-text-align:center;font-size:52px;font-weight:900;
-letter-spacing:6px;margin:30px 0;
-text-shadow:0 0 30px var(--n1),0 0 60px var(--n2)
-}
-.counter{
-text-align:center;margin-bottom:20px;
-font-size:14px;opacity:.85
-}
-.grid{
-display:grid;gap:22px;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
-}
-.card{
-background:rgba(255,255,255,.06);
-padding:22px;border-radius:22px;
-backdrop-filter:blur(10px);
-}
-.external{border:1px solid var(--n1)}
-.internal{border:1px solid var(--n2)}
-.buy{
-margin-top:12px;padding:12px;
-border-radius:16px;text-align:center;
-font-weight:700;cursor:pointer;color:#000
-}
+.logo{text-align:center;font-size:52px;font-weight:900;letter-spacing:6px;margin:30px 0;
+text-shadow:0 0 30px var(--n1),0 0 60px var(--n2)}
+.counter{text-align:center;opacity:.9;margin-bottom:16px}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:rgba(255,255,255,.06);padding:22px;border-radius:22px;backdrop-filter:blur(10px)}
+.external{border:1px solid var(--n1)} .internal{border:1px solid var(--n2)}
+.buy{margin-top:12px;padding:12px;border-radius:16px;text-align:center;font-weight:700;cursor:pointer;color:#000}
 .external .buy{background:linear-gradient(90deg,#00eaff,#00ffa6)}
 .internal .buy{background:linear-gradient(90deg,#a855ff,#ff77ff)}
-.section{margin:70px 0}
-h2{text-align:center;margin-bottom:26px}
-
-/* Reviews */
-.review-box{
-background:rgba(0,0,0,.4);
-padding:20px;border-radius:18px
-}
-.star{font-size:22px;cursor:pointer;color:#555}
-.star.active{color:gold}
-.review{
-background:rgba(255,255,255,.06);
-padding:14px;border-radius:14px;margin-top:10px
-}
-
-/* Popup */
-.popup{
-position:fixed;inset:0;display:none;
-align-items:center;justify-content:center;
-background:rgba(0,0,0,.8)
-}
-.popup-box{
-background:#120022;padding:28px;
-border-radius:22px;text-align:center
-}
-.popup button{
-margin:10px;padding:12px 26px;
-border:none;border-radius:14px;
-font-weight:700;cursor:pointer
-}
-.go{background:linear-gradient(90deg,#00eaff,#a855ff)}
-.cancel{background:#333;color:#fff}
-.footer{
-opacity:.6;text-align:center;
-margin:60px 0 20px;font-size:13px
-}
+.section{margin:70px 0} h2{text-align:center;margin-bottom:22px}
+.review-box{background:rgba(0,0,0,.4);padding:20px;border-radius:18px}
+.star{font-size:22px;cursor:pointer;color:#555} .star.active{color:gold}
+.review{background:rgba(255,255,255,.06);padding:14px;border-radius:14px;margin-top:10px}
+input,textarea{width:100%;padding:10px;border-radius:10px;border:none;margin-top:8px}
+.popup{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.8)}
+.popup-box{background:#120022;padding:28px;border-radius:22px;text-align:center}
+.popup button{margin:10px;padding:12px 26px;border:none;border-radius:14px;font-weight:700;cursor:pointer}
+.go{background:linear-gradient(90deg,#00eaff,#a855ff)} .cancel{background:#333;color:#fff}
+.footer{opacity:.6;text-align:center;margin:60px 0 20px;font-size:13px}
 </style>
 </head>
-
 <body>
 <div class="container">
+  <div class="logo">WHSKY</div>
+  <div class="counter">
+    👁 Visitors: <b id="visits">0</b> • 🟢 Status: Online • 🎟 24/7 Ticket Support
+  </div>
 
-<div class="logo">WHSKY</div>
+  <!-- EXTERNAL -->
+  <div class="section">
+    <h2>🎮 Critical Ops Hack (External)</h2>
+    <div class="grid">
+      <div class="card external">
+        <h3>🕒 Daily</h3>
+        <p>📱 Non-Root: 200₺ — $7</p><p>🔓 Root: 100₺ — $5</p><p>🖥 Emulator: 200₺ — $7</p>
+        <div class="buy" onclick="openPopup()">BUY</div>
+      </div>
+      <div class="card external">
+        <h3>📆 Weekly</h3>
+        <p>📱 Non-Root: 400₺ — $20</p><p>🔓 Root: 300₺ — $15</p><p>🖥 Emulator: 400₺ — $20</p>
+        <div class="buy" onclick="openPopup()">BUY</div>
+      </div>
+      <div class="card external">
+        <h3>🗓 Monthly</h3>
+        <p>📱 Non-Root: 1000₺ — $40</p><p>🔓 Root: 700₺ — $25</p><p>🖥 Emulator: 800₺ — $40</p>
+        <div class="buy" onclick="openPopup()">BUY</div>
+      </div>
+      <div class="card external">
+        <h3>♾ Lifetime</h3>
+        <p>📱 Non-Root: 3500₺ — $90</p><p>🔓 Root: 3000₺ — $80</p><p>🖥 Emulator: 3500₺ — $90</p>
+        <div class="buy" onclick="openPopup()">BUY</div>
+      </div>
+    </div>
+  </div>
 
-<div class="counter">
-👁 Visitors: <span id="visits">0</span> • 🟢 Status: Online • 🎟 24/7 Ticket Support
-</div>
+  <!-- INTERNAL -->
+  <div class="section">
+    <h2>🔐 Critical Ops Hack (Internal)</h2>
+    <div class="grid">
+      <div class="card internal">
+        <h3>🕒 Daily</h3><p>🔓 Root: 100₺ — $3</p><p>🖥 Emulator: 130₺ — $3</p>
+        <div class="buy" onclick="openPopup()">BUY</div>
+      </div>
+      <div class="card internal">
+        <h3>📆 Weekly</h3><p>📱 Non-Root: 250₺ — $10</p><p>🔓 Root: 200₺ — $5</p><p>🖥 Emulator: 250₺ — $7</p>
+        <div class="buy" onclick="openPopup()">BUY</div>
+      </div>
+      <div class="card internal">
+        <h3>🗓 Monthly</h3><p>📱 Non-Root: 650₺ — $20</p><p>🔓 Root: 550₺ — $15</p><p>🖥 Emulator: 600₺ — $17</p>
+        <div class="buy" onclick="openPopup()">BUY</div>
+      </div>
+    </div>
+  </div>
 
-<!-- EXTERNAL -->
-<div class="section">
-<h2>🎮 Critical Ops Hack (External)</h2>
-<div class="grid">
-<div class="card external">
-<h3>🕒 Daily</h3>
-<p>📱 Non-Root: 200₺ — $7</p>
-<p>🔓 Root: 100₺ — $5</p>
-<p>🖥 Emulator: 200₺ — $7</p>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-<div class="card external">
-<h3>📆 Weekly</h3>
-<p>📱 Non-Root: 400₺ — $20</p>
-<p>🔓 Root: 300₺ — $15</p>
-<p>🖥 Emulator: 400₺ — $20</p>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-<div class="card external">
-<h3>🗓 Monthly</h3>
-<p>📱 Non-Root: 1000₺ — $40</p>
-<p>🔓 Root: 700₺ — $25</p>
-<p>🖥 Emulator: 800₺ — $40</p>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-<div class="card external">
-<h3>♾ Lifetime</h3>
-<p>📱 Non-Root: 3500₺ — $90</p>
-<p>🔓 Root: 3000₺ — $80</p>
-<p>🖥 Emulator: 3500₺ — $90</p>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-</div>
-</div>
+  <!-- REVIEWS -->
+  <div class="section">
+    <h2>⭐ User Reviews</h2>
+    <div class="review-box">
+      <div id="stars"></div>
+      <textarea id="reviewText" placeholder="Write your review..."></textarea>
+      <div class="buy" style="margin-top:10px" onclick="addReview()">Submit Review</div>
+      <div id="reviewList"></div>
+    </div>
+  </div>
 
-<!-- INTERNAL -->
-<div class="section">
-<h2>🔐 Critical Ops Hack (Internal)</h2>
-<div class="grid">
-<div class="card internal">
-<h3>🕒 Daily</h3>
-<p>🔓 Root: 100₺ — $3</p>
-<p>🖥 Emulator: 130₺ — $3</p>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-<div class="card internal">
-<h3>📆 Weekly</h3>
-<p>📱 Non-Root: 250₺ — $10</p>
-<p>🔓 Root: 200₺ — $5</p>
-<p>🖥 Emulator: 250₺ — $7</p>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-<div class="card internal">
-<h3>🗓 Monthly</h3>
-<p>📱 Non-Root: 650₺ — $20</p>
-<p>🔓 Root: 550₺ — $15</p>
-<p>🖥 Emulator: 600₺ — $17</p>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-</div>
-</div>
+  <!-- TICKET -->
+  <div class="section">
+    <h2>🎟 Open a Ticket</h2>
+    <div class="review-box">
+      <input id="ticketUser" placeholder="Your name (optional)"/>
+      <textarea id="ticketMsg" placeholder="Describe your issue..."></textarea>
+      <div class="buy" style="margin-top:10px" onclick="openTicket()">Open Ticket</div>
+    </div>
+  </div>
 
-<!-- REVIEWS -->
-<div class="section">
-<h2>⭐ User Reviews</h2>
-<div class="review-box">
-<div id="stars"></div>
-<textarea id="reviewText" placeholder="Write your review..." style="width:100%;margin-top:10px;border-radius:10px;padding:10px"></textarea>
-<div class="buy" style="margin-top:10px" onclick="addReview()">Submit Review</div>
-<div id="reviewList"></div>
-</div>
+  <div class="footer">
+    ⚠️ UI / landing page demonstration. All features are visual representations only. © WHSKY
+  </div>
 </div>
 
-<div class="footer">
-⚠️ UI / landing page demonstration.  
-All features are visual representations only.  
-© WHSKY
-</div>
-
-</div>
-
-<!-- POPUP -->
+<!-- BUY POPUP -->
 <div class="popup" id="popup">
-<div class="popup-box">
-<h3>Continue to Discord?</h3>
-<button class="go" onclick="location.href='https://discord.gg/whisky'">YES</button>
-<button class="cancel" onclick="closePopup()">CANCEL</button>
+  <div class="popup-box">
+    <h3>Continue to Discord?</h3>
+    <button class="go" onclick="location.href='https://discord.gg/whisky'">YES</button>
+    <button class="cancel" onclick="closePopup()">CANCEL</button>
+  </div>
 </div>
-</div>
 
-<script>
-// VISITS
-let visits = localStorage.getItem("visits") || 0;
-visits++;
-localStorage.setItem("visits", visits);
-document.getElementById("visits").innerText = visits;
+<script type="module">
+/* ===== FIREBASE ===== */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, doc, setDoc, updateDoc, increment, onSnapshot,
+         collection, addDoc, getDocs, serverTimestamp } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// POPUP
-function openPopup(){popup.style.display="flex"}
-function closePopup(){popup.style.display="none"}
+const FIREBASE_CONFIG = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_DOMAIN",
+  projectId: "YOUR_PROJECT_ID"
+};
 
-// STARS
-let rating = 0;
-const starBox = document.getElementById("stars");
+const app = initializeApp(FIREBASE_CONFIG);
+const db = getFirestore(app);
+
+/* VISITORS */
+const vref = doc(db,"visitors","live");
+await setDoc(vref,{count:0},{merge:true});
+updateDoc(vref,{count:increment(1)});
+onSnapshot(vref,s=>{ document.getElementById("visits").innerText=s.data().count });
+
+/* POPUP */
+window.openPopup=()=>popup.style.display="flex";
+window.closePopup=()=>popup.style.display="none";
+
+/* STARS */
+let rating=0;
+const starBox=document.getElementById("stars");
 for(let i=1;i<=5;i++){
-let s=document.createElement("span");
-s.innerText="★"; s.className="star";
-s.onclick=()=>{rating=i;updateStars()};
-starBox.appendChild(s);
-}
-function updateStars(){
-[...starBox.children].forEach((s,i)=>{
-s.classList.toggle("active",i<rating)
-})
+  const s=document.createElement("span"); s.textContent="★"; s.className="star";
+  s.onclick=()=>{rating=i;[...starBox.children].forEach((x,j)=>x.classList.toggle("active",j<i))};
+  starBox.appendChild(s);
 }
 
-// REVIEWS
+/* REVIEWS */
 const list=document.getElementById("reviewList");
-let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
-function render(){
-list.innerHTML="";
-reviews.forEach(r=>{
-let d=document.createElement("div");
-d.className="review";
-d.innerHTML="⭐".repeat(r.star)+"<br>"+r.text;
-list.appendChild(d);
-})
+async function loadReviews(){
+  list.innerHTML="";
+  const snap=await getDocs(collection(db,"comments"));
+  snap.forEach(d=>{
+    const r=d.data();
+    const div=document.createElement("div");
+    div.className="review";
+    div.innerHTML="⭐".repeat(r.stars)+"<br>"+r.text;
+    list.prepend(div);
+  });
 }
-function addReview(){
-let text=document.getElementById("reviewText").value;
-if(!rating||!text)return;
-reviews.push({star:rating,text});
-localStorage.setItem("reviews",JSON.stringify(reviews));
-rating=0;updateStars();
-document.getElementById("reviewText").value="";
-render();
-}
-render();
-</script>
+window.addReview=async ()=>{
+  const text=reviewText.value.trim();
+  if(!rating||!text) return;
+  await addDoc(collection(db,"comments"),{text,stars:rating,time:serverTimestamp()});
+  rating=0; reviewText.value=""; loadReviews();
+};
+loadReviews();
 
+/* TICKET */
+window.openTicket=async ()=>{
+  const user=ticketUser.value||"Guest";
+  const message=ticketMsg.value.trim();
+  if(!message) return;
+  await addDoc(collection(db,"tickets"),{user,message,status:"open",time:serverTimestamp()});
+  ticketMsg.value=""; alert("Ticket opened!");
+};
+</script>
 </body>
-  </html>
+</html>

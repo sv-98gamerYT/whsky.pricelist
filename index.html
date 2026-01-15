@@ -6,95 +6,123 @@
 <title>WHSKY</title>
 
 <style>
+:root{
+  --neon1:#00e0ff;
+  --neon2:#ff4dd2;
+  --bg1:#060014;
+  --bg2:#12002a;
+}
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
-  min-height:100vh;
-  background:radial-gradient(circle at top,#12002a,#050014,#020008);
-  color:#fff;
-  overflow-x:hidden;
+  background:radial-gradient(circle at top,var(--bg2),var(--bg1),#020008);
+  color:#fff;overflow-x:hidden;
 }
-.clouds{
-  position:fixed;inset:0;
-  background:url("https://www.transparenttextures.com/patterns/cloudy-day.png");
-  opacity:.15;animation:move 120s linear infinite;z-index:-1;
-}
-@keyframes move{from{background-position:0 0}to{background-position:4000px 0}}
+a{color:inherit;text-decoration:none}
 
-.container{max-width:1200px;margin:auto;padding:20px}
+/* BG */
+.bg{
+  position:fixed;inset:0;z-index:-1;
+  background:
+    linear-gradient(120deg,rgba(0,224,255,.08),transparent),
+    linear-gradient(-120deg,rgba(255,77,210,.08),transparent);
+  animation:hue 14s infinite alternate;
+}
+@keyframes hue{to{filter:hue-rotate(45deg)}}
+
+/* Header */
+.header{
+  position:sticky;top:0;z-index:9;
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,.45);
+  padding:10px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.mini-logo{font-weight:900;letter-spacing:4px}
+.lang{opacity:.7;font-size:14px}
+
+/* Layout */
+.container{max-width:1200px;margin:auto;padding:24px}
 .logo{
-  text-align:center;margin:35px 0;
-  font-size:46px;font-weight:900;letter-spacing:6px;
-  text-shadow:0 0 15px #7f5cff,0 0 40px #00e0ff;
+  text-align:center;margin:40px 0;
+  font-size:48px;font-weight:900;letter-spacing:6px;
+  text-shadow:0 0 18px var(--neon1),0 0 40px var(--neon2);
 }
+.section{margin:60px 0}
+.section h2{text-align:center;margin-bottom:26px}
 
-h2{text-align:center;margin:25px 0}
-.external-title{color:#00e0ff;text-shadow:0 0 15px #00e0ff}
-.internal-title{color:#ff4dd2;text-shadow:0 0 15px #ff4dd2}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;margin-bottom:45px;
+/* Cards */
+.grid{
+  display:grid;gap:22px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 }
 .card{
-  padding:22px;border-radius:20px;
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(6px);
+  padding:22px;border-radius:22px;
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(8px);
   transition:.3s;
 }
 .card:hover{transform:translateY(-6px)}
-
-.external{
-  border:1px solid rgba(0,224,255,.5);
-  box-shadow:0 0 30px rgba(0,224,255,.45);
-}
-.internal{
-  border:1px solid rgba(255,77,210,.5);
-  box-shadow:0 0 30px rgba(255,77,210,.45);
-}
-
-.card h3{margin-bottom:10px}
-.price{margin:6px 0;opacity:.9}
+.external{border:1px solid rgba(0,224,255,.5);box-shadow:0 0 30px rgba(0,224,255,.4)}
+.internal{border:1px solid rgba(255,77,210,.5);box-shadow:0 0 30px rgba(255,77,210,.4)}
 
 .buy{
-  margin-top:15px;padding:12px;border-radius:16px;
-  font-weight:bold;text-align:center;cursor:pointer;color:#000;
+  margin-top:14px;padding:12px;border-radius:16px;
+  text-align:center;font-weight:bold;cursor:pointer;color:#000;
 }
 .external .buy{background:linear-gradient(90deg,#00e0ff,#00ffa6)}
 .internal .buy{background:linear-gradient(90deg,#ff4dd2,#b66bff)}
 
-.payment{
-  margin:45px auto;padding:25px;max-width:700px;text-align:center;
-  border-radius:22px;background:rgba(255,255,255,.07);
-  box-shadow:0 0 35px rgba(127,92,255,.6);
+.badge{
+  display:inline-block;margin:6px 0;padding:6px 10px;
+  border-radius:999px;font-size:12px;
+  background:rgba(0,0,0,.5);box-shadow:0 0 12px #7f5cff;
 }
-.payment h2{margin-bottom:18px;color:#ffd700;text-shadow:0 0 15px #ffd700}
-.pay-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-.pay{
-  padding:10px 16px;border-radius:14px;
+
+/* Feature icons */
+.feature{display:flex;gap:10px;align-items:flex-start}
+.feature span{font-size:20px}
+
+/* FAQ */
+.faq details{
   background:rgba(0,0,0,.45);
-  box-shadow:0 0 12px rgba(255,255,255,.25);
+  padding:14px;border-radius:14px;margin-bottom:10px;
 }
 
-.cf{
-  margin:35px auto 10px;max-width:260px;text-align:center;
-  padding:10px;border-radius:14px;
-  background:rgba(0,0,0,.5);
-  box-shadow:0 0 20px #ff7a00;
-  color:#ffb000;font-weight:bold;
+/* Payment */
+.payment{
+  padding:26px;border-radius:22px;
+  background:rgba(255,255,255,.07);
+  box-shadow:0 0 35px rgba(127,92,255,.6);
+  text-align:center;
+}
+.pay-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.pay{padding:10px 14px;border-radius:12px;background:rgba(0,0,0,.45)}
+
+/* Status */
+.status{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap
+}
+.dot{width:10px;height:10px;border-radius:50%;background:#00ff8f;box-shadow:0 0 10px #00ff8f}
+
+/* Footer */
+.footer{
+  margin-top:60px;padding:20px;text-align:center;
+  opacity:.7;font-size:14px
 }
 
+/* Popup */
 .popup{
-  position:fixed;inset:0;background:rgba(0,0,0,.75);
-  display:none;align-items:center;justify-content:center;
+  position:fixed;inset:0;display:none;
+  align-items:center;justify-content:center;
+  background:rgba(0,0,0,.75)
 }
 .popup-box{
-  background:#120022;padding:28px;border-radius:20px;
-  text-align:center;box-shadow:0 0 40px #7f5cff;
+  background:#120022;padding:28px;border-radius:22px;
+  box-shadow:0 0 40px #7f5cff;text-align:center
 }
 .popup button{
-  margin:10px;padding:12px 26px;border:none;border-radius:14px;
-  font-weight:bold;cursor:pointer;
+  margin:10px;padding:12px 26px;border:none;border-radius:16px;
+  font-weight:bold;cursor:pointer
 }
 .go{background:linear-gradient(90deg,#00e0ff,#7f5cff);color:#000}
 .cancel{background:#333;color:#fff}
@@ -102,109 +130,148 @@ h2{text-align:center;margin:25px 0}
 </head>
 
 <body>
-<div class="clouds"></div>
-<div class="container">
+<div class="bg"></div>
 
+<div class="header">
+  <div class="mini-logo">WHSKY</div>
+  <div class="lang">🌍 EN</div>
+</div>
+
+<div class="container">
 <div class="logo">WHSKY</div>
 
 <!-- EXTERNAL -->
-<h2 class="external-title">🎮 Critical Ops — EXTERNAL</h2>
-<div class="cards">
-
-<div class="card external">
-<h3>Daily</h3>
-<div class="price">No Root (Need vPhoneOS VIP): 200₺ — $7</div>
-<div class="price">Root: 100₺ — $5</div>
-<div class="price">Emulator: 200₺ — $7</div>
-<div class="buy" onclick="openPopup()">BUY</div>
+<div class="section">
+<h2>🎮 Critical Ops Hack (External)</h2>
+<div class="grid">
+  <div class="card external">
+    <h3>🕒 Daily</h3>
+    <div class="badge">No Root need vPhoneOS VIP</div>
+    <p>📱 200₺ / $7</p>
+    <p>🔓 Root: 100₺ / $5</p>
+    <p>🖥 Emulator: 200₺ / $7</p>
+    <div class="buy" onclick="openPopup()">BUY</div>
+  </div>
+  <div class="card external">
+    <h3>📆 Weekly</h3>
+    <p>📱 400₺ / $20</p>
+    <p>🔓 Root: 300₺ / $15</p>
+    <p>🖥 Emulator: 400₺ / $20</p>
+    <div class="buy" onclick="openPopup()">BUY</div>
+  </div>
+  <div class="card external">
+    <h3>🗓 Monthly</h3>
+    <p>📱 1000₺ / $40</p>
+    <p>🔓 Root: 700₺ / $25</p>
+    <p>🖥 Emulator: 800₺ / $40</p>
+    <div class="buy" onclick="openPopup()">BUY</div>
+  </div>
+  <div class="card external">
+    <h3>♾ Lifetime</h3>
+    <p>📱 3500₺ / $90</p>
+    <p>🔓 Root: 3000₺ / $80</p>
+    <p>🖥 Emulator: 3500₺ / $90</p>
+    <div class="buy" onclick="openPopup()">BUY</div>
+  </div>
 </div>
-
-<div class="card external">
-<h3>Weekly</h3>
-<div class="price">No Root (Need vPhoneOS VIP): 400₺ — $20</div>
-<div class="price">Root: 300₺ — $15</div>
-<div class="price">Emulator: 400₺ — $20</div>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-
-<div class="card external">
-<h3>Monthly</h3>
-<div class="price">No Root (Need vPhoneOS VIP): 1000₺ — $40</div>
-<div class="price">Root: 700₺ — $25</div>
-<div class="price">Emulator: 800₺ — $40</div>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-
-<div class="card external">
-<h3>Lifetime</h3>
-<div class="price">No Root (Need vPhoneOS VIP): 3500₺ — $90</div>
-<div class="price">Root: 3000₺ — $80</div>
-<div class="price">Emulator: 3500₺ — $90</div>
-<div class="buy" onclick="openPopup()">BUY</div>
-</div>
-
 </div>
 
 <!-- INTERNAL -->
-<h2 class="internal-title">🔐 Critical Ops — INTERNAL</h2>
-<div class="cards">
-
-<div class="card internal">
-<h3>Daily</h3>
-<div class="price">Root: 100₺ — $3</div>
-<div class="price">Emulator: 130₺ — $3</div>
-<div class="buy" onclick="openPopup()">BUY</div>
+<div class="section">
+<h2>🔐 Critical Ops Hack (Internal)</h2>
+<div class="grid">
+  <div class="card internal">
+    <h3>🕒 Daily</h3>
+    <p>🔓 Root: 100₺ / $3</p>
+    <p>🖥 Emulator: 130₺ / $3</p>
+    <div class="buy" onclick="openPopup()">BUY</div>
+  </div>
+  <div class="card internal">
+    <h3>📆 Weekly</h3>
+    <p>📱 250₺ / $10</p>
+    <p>🔓 Root: 200₺ / $5</p>
+    <p>🖥 Emulator: 250₺ / $7</p>
+    <div class="buy" onclick="openPopup()">BUY</div>
+  </div>
+  <div class="card internal">
+    <h3>🗓 Monthly</h3>
+    <p>📱 650₺ / $20</p>
+    <p>🔓 Root: 550₺ / $15</p>
+    <p>🖥 Emulator: 600₺ / $17</p>
+    <div class="buy" onclick="openPopup()">BUY</div>
+  </div>
+</div>
 </div>
 
-<div class="card internal">
-<h3>Weekly</h3>
-<div class="price">No Root: 250₺ — $10</div>
-<div class="price">Root: 200₺ — $5</div>
-<div class="price">Emulator: 250₺ — $7</div>
-<div class="buy" onclick="openPopup()">BUY</div>
+<!-- FEATURES -->
+<div class="section">
+<h2>⭐ Features</h2>
+<div class="grid">
+  <div class="card feature"><span>⚡</span><div>Optimized performance (UI)</div></div>
+  <div class="card feature"><span>🛡</span><div>Cloudflare protected landing</div></div>
+  <div class="card feature"><span>📱</span><div>Mobile & emulator friendly UI</div></div>
+  <div class="card feature"><span>🔄</span><div>Frequent updates (demo)</div></div>
+</div>
 </div>
 
-<div class="card internal">
-<h3>Monthly</h3>
-<div class="price">No Root: 650₺ — $20</div>
-<div class="price">Root: 550₺ — $15</div>
-<div class="price">Emulator: 600₺ — $17</div>
-<div class="buy" onclick="openPopup()">BUY</div>
+<!-- STATUS -->
+<div class="section">
+<h2>🟢 System Status</h2>
+<div class="status">
+  <div class="card"><span class="dot"></span> External: Operational</div>
+  <div class="card"><span class="dot"></span> Internal: Operational</div>
+</div>
 </div>
 
-</div>
-
-<div class="payment">
-<h2>💳 PAYMENT METHODS</h2>
+<!-- PAYMENT -->
+<div class="section payment">
+<h2>💳 Payment Methods</h2>
 <div class="pay-grid">
-<div class="pay">💳 Card</div>
-<div class="pay">🏦 IBAN</div>
-<div class="pay">🌍 Western Union</div>
-<div class="pay">🔁 Revolut</div>
-<div class="pay">🪙 Binance</div>
-<div class="pay">🎮 Gift Card</div>
-<div class="pay">🛒 Shopier</div>
-<div class="pay">💎 Papara</div>
+  <div class="pay">💳 Card</div>
+  <div class="pay">🏦 IBAN</div>
+  <div class="pay">🔁 Revolut</div>
+  <div class="pay">🪙 Binance</div>
+  <div class="pay">💎 Papara</div>
+  <div class="pay">🎮 Gift Card</div>
 </div>
 </div>
 
-<div class="cf">🛡️ Cloudflare Protected</div>
-
+<!-- FAQ -->
+<div class="section">
+<h2>❓ FAQ</h2>
+<div class="faq">
+  <details><summary>Is this a demo site?</summary><p>Yes, UI/UX demo layout.</p></details>
+  <details><summary>Where do I get support?</summary><p>Discord via BUY button.</p></details>
+  <details><summary>Updates?</summary><p>Changelog section below.</p></details>
+</div>
 </div>
 
+<!-- CHANGELOG -->
+<div class="section">
+<h2>🔄 Changelog</h2>
+<div class="grid">
+  <div class="card">v1.3 – UI polish, animations</div>
+  <div class="card">v1.2 – Pricing layout update</div>
+</div>
+</div>
+
+<div class="footer">
+🛡 Cloudflare Protected • 🔒 SSL Secure • © WHSKY
+</div>
+</div>
+
+<!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-box">
     <h3>Continue to Discord?</h3>
-    <button class="go" onclick="goDiscord()">YES</button>
+    <button class="go" onclick="location.href='https://discord.gg/whisky'">YES</button>
     <button class="cancel" onclick="closePopup()">CANCEL</button>
   </div>
 </div>
 
 <script>
-function openPopup(){document.getElementById("popup").style.display="flex"}
-function closePopup(){document.getElementById("popup").style.display="none"}
-function goDiscord(){window.location.href="https://discord.gg/whisky"}
+function openPopup(){popup.style.display="flex"}
+function closePopup(){popup.style.display="none"}
 </script>
-
 </body>
 </html>

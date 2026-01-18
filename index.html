@@ -1,81 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Whsky Pricelist</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WHSKY Pricelist</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
+:root{
+  --bg:#06080f;
+  --card:#0c1020;
+  --line:rgba(0,255,200,.25);
+  --neon:#00ffe0;
+  --neon2:#00a3ff;
+  --red:#ff3b5c;
+  --green:#22ff88;
+}
+*{box-sizing:border-box}
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:radial-gradient(circle at top,#1b1f2a,#0b0e14 70%);
-  color:#fff;
-}
-.container{max-width:1100px;margin:auto;padding:30px 16px 60px}
-h1,h2,h3{text-align:center}
-.card{
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:16px;
-  padding:18px;
-  margin-top:20px;
-}
-.methods,.prices{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:14px;
-}
-.method,.price-box{
-  background:rgba(0,0,0,.4);
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:14px;
-  padding:14px;
-}
-.price-box ul{list-style:none;padding:0;margin:0}
-.price-box li{padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.15)}
-.price-box li:last-child{border-bottom:none}
-.buy{
-  margin-top:12px;
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(135deg,#00ffc6,#00a3ff);
-  color:#000;
-  font-weight:900;
-  cursor:pointer;
-}
-.buy:hover{opacity:.9}
-.lang{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-bottom:20px;
-}
-.lang button{
-  padding:8px 14px;
-  border-radius:10px;
-  border:none;
-  font-weight:bold;
-  cursor:pointer;
-}
-.active{background:#00ffc6;color:#000}
-.footer{text-align:center;opacity:.8;margin-top:40px;font-size:13px}
-</style>
+  font-family:'Orbitron',system-ui,Arial;
+  background:
+    radial-gradient(900px 400px at 50% -10%, #0e1636 0%, transparent 60%),
+    radial-gradient(700px 300px at 10% 10%, #08112a 0%, transparent 60%),
+    var(--bg);
+  color:#eaffff;
+}/* INTRO */ #intro{ position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:radial-gradient(circle at center,#0b1330,#04060c 70%); } #intro h1{ font-size:64px; letter-spacing:6px; margin:0; color:var(--neon); text-shadow: 0 0 10px var(--neon), 0 0 30px var(--neon), 0 0 60px var(--neon2); animation:glow 1.5s ease-in-out infinite alternate; } @keyframes glow{from{opacity:.7}to{opacity:1}}
+
+.container{max-width:1100px;margin:auto;padding:26px 16px 70px} .header{display:flex;justify-content:center;align-items:center;margin-bottom:14px} .badge{padding:6px 12px;border-radius:999px;font-weight:700;font-size:12px} .badge.ext{background:rgba(34,255,136,.15);color:var(--green);border:1px solid rgba(34,255,136,.35)} .badge.int{background:rgba(255,59,92,.15);color:var(--red);border:1px solid rgba(255,59,92,.35)}
+
+.card{ background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)) , var(--card); border:1px solid var(--line); border-radius:18px; padding:18px; margin-top:18px; box-shadow:0 0 0 1px rgba(0,255,200,.08), 0 10px 40px rgba(0,0,0,.6); }
+
+h1,h2,h3{margin:8px 0;text-align:center} .neon{ color:var(--neon); text-shadow:0 0 10px var(--neon),0 0 30px var(--neon2); }
+
+.methods,.prices{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); } .method,.price-box{ background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55)); border:1px solid var(--line); border-radius:14px; padding:14px; } .method{display:flex;align-items:center;justify-content:center;font-weight:600}
+
+.price-box ul{list-style:none;padding:0;margin:8px 0 0} .price-box li{padding:6px 0;border-bottom:1px dashed rgba(0,255,200,.25)} .price-box li:last-child{border-bottom:none}
+
+.buy{ margin-top:12px;width:100%;padding:12px;border:none;border-radius:12px; background:linear-gradient(135deg,var(--neon),var(--neon2)); color:#001012;font-weight:900;cursor:pointer; box-shadow:0 0 18px rgba(0,255,224,.6); } .buy:hover{filter:brightness(1.05)}
+
+.why{ display:grid;gap:10px;margin-top:16px } .why .item{ background:rgba(0,255,200,.06); border:1px solid var(--line); border-radius:12px;padding:10px 12px }
+
+.footer{text-align:center;opacity:.75;margin-top:40px;font-size:12px}
+
+/* fade in after intro */ .fade{animation:fadeIn .8s ease forwards} @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}} </style>
+
 </head>
-
-<body>
-<div class="container">
-
-<!-- LANGUAGE SELECT -->
-<div class="lang">
-  <button onclick="setLang('en')" id="btn-en" class="active">English</button>
-  <button onclick="setLang('tr')" id="btn-tr">Türkçe</button>
-</div>
-
-<h1 data-en="Payment Methods" data-tr="Ödeme Yöntemleri">Payment Methods</h1>
-
+<body><!-- INTRO --><div id="intro"><h1>WHSKY</h1></div><div class="container fade" id="app" style="display:none"><h1 class="neon">PAYMENT METHODS</h1>
 <div class="card">
   <div class="methods">
     <div class="method">IBAN</div>
@@ -86,103 +55,90 @@ h1,h2,h3{text-align:center}
     <div class="method">İtemsatış</div>
     <div class="method">Papara</div>
   </div>
-</div>
-
-<h2 data-en="Critical Ops Hack (External)" data-tr="Critical Ops Hile (External)">Critical Ops Hack (External)</h2>
-
-<div class="prices">
-  <div class="price-box">
-    <h3 data-en="Daily" data-tr="Günlük">Daily</h3>
-    <ul>
-      <li>Non-Root (Need vPhoneOS VIP): 200₺ — $7</li>
-      <li>Root: 100₺ — $5</li>
-      <li>Emulator: 200₺ — $7</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
+</div><div class="card">
+  <div class="header"><span class="badge ext">EXTERNAL</span></div>
+  <h2 class="neon">Critical Ops Hack (External)</h2>
+  <div class="why">
+    <div class="item">🟢 Runs outside the game, no file modification</div>
+    <div class="item">🛡️ Lowest ban risk, safest option</div>
+    <div class="item">✅ Recommended choice</div>
   </div>
-
-  <div class="price-box">
-    <h3 data-en="Weekly" data-tr="Haftalık">Weekly</h3>
-    <ul>
-      <li>Non-Root: 400₺ — $20</li>
-      <li>Root: 300₺ — $15</li>
-      <li>Emulator: 400₺ — $20</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
+  <div class="prices">
+    <div class="price-box">
+      <h3>Daily</h3>
+      <ul>
+        <li>Non-Root (Need vPhoneOS VIP): 200₺ — $7</li>
+        <li>Root: 100₺ — $5</li>
+        <li>Emulator: 200₺ — $7</li>
+      </ul>
+      <button class="buy" onclick="go()">BUY</button>
+    </div>
+    <div class="price-box">
+      <h3>Weekly</h3>
+      <ul>
+        <li>Non-Root: 400₺ — $20</li>
+        <li>Root: 300₺ — $15</li>
+        <li>Emulator: 400₺ — $20</li>
+      </ul>
+      <button class="buy" onclick="go()">BUY</button>
+    </div>
+    <div class="price-box">
+      <h3>Monthly</h3>
+      <ul>
+        <li>Non-Root: 1000₺ — $40</li>
+        <li>Root: 700₺ — $25</li>
+        <li>Emulator: 800₺ — $40</li>
+      </ul>
+      <button class="buy" onclick="go()">BUY</button>
+    </div>
+    <div class="price-box">
+      <h3>Lifetime</h3>
+      <ul>
+        <li>Non-Root: 3500₺ — $90</li>
+        <li>Root: 3000₺ — $80</li>
+        <li>Emulator: 3500₺ — $90</li>
+      </ul>
+      <button class="buy" onclick="go()">BUY</button>
+    </div>
   </div>
-
-  <div class="price-box">
-    <h3 data-en="Monthly" data-tr="Aylık">Monthly</h3>
-    <ul>
-      <li>Non-Root: 1000₺ — $40</li>
-      <li>Root: 700₺ — $25</li>
-      <li>Emulator: 800₺ — $40</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
+</div><div class="card">
+  <div class="header"><span class="badge int">INTERNAL</span></div>
+  <h2 class="neon">Critical Ops Hack (Internal)</h2>
+  <div class="prices">
+    <div class="price-box">
+      <h3>Daily</h3>
+      <ul>
+        <li>Root: 70₺ — $3</li>
+        <li>Emulator: 100₺ — $3</li>
+      </ul>
+      <button class="buy" onclick="go()">BUY</button>
+    </div>
+    <div class="price-box">
+      <h3>Weekly</h3>
+      <ul>
+        <li>Non-Root: 180₺ — $7</li>
+        <li>Root: 150₺ — $5</li>
+        <li>Emulator: 160₺ — $5</li>
+      </ul>
+      <button class="buy" onclick="go()">BUY</button>
+    </div>
+    <div class="price-box">
+      <h3>Monthly</h3>
+      <ul>
+        <li>Non-Root: 550₺ — $20</li>
+        <li>Root: 450₺ — $15</li>
+        <li>Emulator: 450₺ — $15</li>
+      </ul>
+      <button class="buy" onclick="go()">BUY</button>
+    </div>
   </div>
-
-  <div class="price-box">
-    <h3>Lifetime</h3>
-    <ul>
-      <li>Non-Root: 3500₺ — $90</li>
-      <li>Root: 3000₺ — $80</li>
-      <li>Emulator: 3500₺ — $90</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-</div>
-
-<h2 data-en="Critical Ops Hack (Internal)" data-tr="Critical Ops Hile (Internal)">Critical Ops Hack (Internal)</h2>
-
-<div class="prices">
-  <div class="price-box">
-    <h3 data-en="Daily" data-tr="Günlük">Daily</h3>
-    <ul>
-      <li>Root: 70₺ — $3</li>
-      <li>Emulator: 100₺ — $3</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-
-  <div class="price-box">
-    <h3 data-en="Weekly" data-tr="Haftalık">Weekly</h3>
-    <ul>
-      <li>Non-Root: 180₺ — $7</li>
-      <li>Root: 150₺ — $5</li>
-      <li>Emulator: 160₺ — $5</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-
-  <div class="price-box">
-    <h3 data-en="Monthly" data-tr="Aylık">Monthly</h3>
-    <ul>
-      <li>Non-Root: 550₺ — $20</li>
-      <li>Root: 450₺ — $15</li>
-      <li>Emulator: 450₺ — $15</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-</div>
-
-<div class="footer" data-en="All purchase buttons redirect to Discord."
-     data-tr="Tüm satın alma butonları Discord'a yönlendirir.">
-All purchase buttons redirect to Discord.
-</div>
-
-</div>
-
-<script>
-function go(){
-  window.location.href="https://discord.gg/jCbKykczSS";
-}
-function setLang(l){
-  document.querySelectorAll("[data-en]").forEach(el=>{
-    el.innerText = el.dataset[l];
-  });
-  document.getElementById("btn-en").classList.toggle("active",l==="en");
-  document.getElementById("btn-tr").classList.toggle("active",l==="tr");
-}
-</script>
-</body>
-</html>
+</div><div class="footer">All purchase buttons redirect to Discord.</div>
+</div><script>
+function go(){ window.location.href='https://discord.gg/jCbKykczSS'; }
+// intro timing
+setTimeout(()=>{
+  document.getElementById('intro').style.display='none';
+  document.getElementById('app').style.display='block';
+},3000);
+</script></body>
+        </html>

@@ -3,214 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WHSKY</title>
+<title>Whsky Pricelist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-*{
-  box-sizing:border-box;
-  font-family:Inter,system-ui,sans-serif
-}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  margin:0;
-  background:radial-gradient(circle at top,#2b0d4f 0%,#0c0218 55%,#050008 100%);
-  color:#fff
+  font-family:'Orbitron',sans-serif;
+  color:#fff;
+  background:linear-gradient(-45deg,#05050a,#0a0a1a,#05050a,#0f0020);
+  background-size:400% 400%;
+  animation:bg 12s ease infinite;
 }
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* INTRO */
+#intro{
+  position:fixed;inset:0;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:introOut 1s ease forwards;
+  animation-delay:3s;
+}
+#intro h1{
+  font-size:64px;
+  letter-spacing:10px;
+  color:#00fff0;
+  text-shadow:0 0 25px #00fff0;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{opacity:.5}
+  50%{opacity:1}
+  100%{opacity:.5}
+}
+@keyframes introOut{
+  to{opacity:0;visibility:hidden}
+}
+
+/* LAYOUT */
 .container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px 90px
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
 }
-h1{
+.section{
+  background:rgba(0,0,0,.6);
+  border:1px solid #1f1f2f;
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:35px;
+  backdrop-filter:blur(6px);
+}
+h2{
   text-align:center;
-  margin-bottom:30px;
-  letter-spacing:1px
+  margin-bottom:15px;
+  color:#00fff0;
 }
-.section{margin-top:55px}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px
+.sep{
+  margin:15px 0;
+  border-top:1px dashed #333;
 }
-.card{
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(14px);
-  border-radius:18px;
-  padding:22px;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 0 25px rgba(0,255,200,.15);
-  transition:.25s
+
+/* TAGS */
+.tag{
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:10px;
 }
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 45px rgba(0,255,200,.35)
-}
-.card h2{
-  margin:0 0 8px;
-  font-size:20px
-}
-.card ul{
-  list-style:none;
-  padding:0;
-  margin:0;
-  font-size:14px;
-  opacity:.95
-}
-.card ul li{margin-bottom:6px}
-.buy{
-  margin-top:16px;
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:30px;
-  font-weight:700;
-  cursor:pointer;
-  color:#000;
-  background:linear-gradient(90deg,#00ffd5,#00ffa2)
-}
-.buy.internal{
-  background:linear-gradient(90deg,#b46cff,#ff77e9)
-}
+.ext{background:#00aa66}
+.int{background:#aa0033}
 
 /* PAYMENT */
-.payment{
-  margin-top:60px;
-  text-align:center
-}
 .pay-grid{
-  margin-top:20px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:14px
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:10px;
 }
 .pay{
-  background:rgba(255,255,255,.08);
+  background:#0b0b18;
+  border:1px solid #222;
   padding:12px;
-  border-radius:16px;
-  font-size:14px;
-  border:1px solid rgba(255,255,255,.15)
+  border-radius:10px;
+  text-align:center;
 }
 
-footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
+/* PRICE */
+.price div{margin:6px 0}
+
+/* BUY */
+.buy{
+  display:block;
+  width:220px;
+  margin:25px auto 0;
+  padding:14px;
   text-align:center;
-  padding:12px;
-  background:rgba(0,0,0,.4);
-  backdrop-filter:blur(10px);
-  font-size:13px;
-  opacity:.8
+  border-radius:30px;
+  background:#00fff0;
+  color:#000;
+  text-decoration:none;
+  font-weight:800;
+  transition:.2s;
+}
+.buy:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px #00fff0;
 }
 </style>
 </head>
 
 <body>
 
+<div id="intro"><h1>WHSKY</h1></div>
+
 <div class="container">
 
-<h1>Critical Ops EXTERNAL</h1>
-
-<div class="grid">
-  <div class="card">
-    <h2>🕒 Daily</h2>
-    <ul>
-      <li>💰 Non-Root: 200₺ — 7$</li>
-      <li>💰 Root: 100₺ — 5$</li>
-      <li>💰 Emulator: 200₺ — 7$</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-
-  <div class="card">
-    <h2>📆 Weekly</h2>
-    <ul>
-      <li>💰 Non-Root: 400₺ — 20$</li>
-      <li>💰 Root: 300₺ — 15$</li>
-      <li>💰 Emulator: 400₺ — 20$</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-
-  <div class="card">
-    <h2>🗓 Monthly</h2>
-    <ul>
-      <li>💰 Non-Root: 1000₺ — 40$</li>
-      <li>💰 Root: 700₺ — 25$</li>
-      <li>💰 Emulator: 800₺ — 40$</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-
-  <div class="card">
-    <h2>♾ Lifetime</h2>
-    <ul>
-      <li>💰 Non-Root: 3500₺ — 90$</li>
-      <li>💰 Root: 3000₺ — 80$</li>
-      <li>💰 Emulator: 3500₺ — 90$</li>
-    </ul>
-    <button class="buy" onclick="go()">BUY</button>
-  </div>
-</div>
-
-<div class="section">
-<h1>Critical Ops INTERNAL</h1>
-
-<div class="grid">
-  <div class="card">
-    <h2>🕓 Daily</h2>
-    <ul>
-      <li>💰 Root: 70₺ — 3$</li>
-      <li>💰 Emulator: 100₺ — 3$</li>
-    </ul>
-    <button class="buy internal" onclick="go()">BUY</button>
-  </div>
-
-  <div class="card">
-    <h2>📆 Weekly</h2>
-    <ul>
-      <li>💰 Non-Root: 180₺ — 7$</li>
-      <li>💰 Root: 150₺ — 5$</li>
-      <li>💰 Emulator: 160₺ — 5$</li>
-    </ul>
-    <button class="buy internal" onclick="go()">BUY</button>
-  </div>
-
-  <div class="card">
-    <h2>🗓 Monthly</h2>
-    <ul>
-      <li>💰 Non-Root: 550₺ — 20$</li>
-      <li>💰 Root: 450₺ — 15$</li>
-      <li>💰 Emulator: 450₺ — 15$</li>
-    </ul>
-    <button class="buy internal" onclick="go()">BUY</button>
-  </div>
-</div>
-</div>
-
 <!-- PAYMENT METHODS -->
-<div class="payment">
-<h1>💳 Payment Methods</h1>
-<div class="pay-grid">
-  <div class="pay">💳 Card</div>
-  <div class="pay">🏦 IBAN</div>
-  <div class="pay">🌍 Western Union</div>
-  <div class="pay">🔁 Revolut</div>
-  <div class="pay">🪙 Binance</div>
-  <div class="pay">🎮 Giftcard</div>
-  <div class="pay">🛒 Shopier</div>
-  <div class="pay">💎 Papara</div>
-</div>
-</div>
-
+<div class="section">
+  <h2>💳 PAYMENT METHODS</h2>
+  <div class="pay-grid">
+    <div class="pay">💳 Card</div>
+    <div class="pay">🏦 IBAN</div>
+    <div class="pay">🌍 Western Union</div>
+    <div class="pay">🪙 Binance</div>
+    <div class="pay">🪙 Binance Giftcard</div>
+    <div class="pay">🛒 Shopier</div>
+    <div class="pay">🛍️ İtemsatış</div>
+    <div class="pay">💎 Papara</div>
+  </div>
 </div>
 
-<footer>© 2026 WHSKY</footer>
+<!-- EXTERNAL -->
+<div class="section">
+  <span class="tag ext">🟢 EXTERNAL</span>
+  <h2>Critical Ops Hack (External)</h2>
 
-<script>
-function go(){
-  window.location.href="https://discord.gg/whisky";
-}
-</script>
+  <div class="price">
+    <b>🕒 Daily</b>
+    <div>💰 Non-Root (Need vPhoneOS VIP): 200₺ — 7$</div>
+    <div>💰 Root: 100₺ — 5$</div>
+    <div>💰 Emulator: 200₺ — 7$</div>
 
+    <div class="sep"></div>
+
+    <b>📆 Weekly</b>
+    <div>💰 Non-Root (Need vPhoneOS VIP): 400₺ — 20$</div>
+    <div>💰 Root: 300₺ — 15$</div>
+    <div>💰 Emulator: 400₺ — 20$</div>
+
+    <div class="sep"></div>
+
+    <b>🗓️ Monthly</b>
+    <div>💰 Non-Root: 1000₺ — 40$</div>
+    <div>💰 Root: 700₺ — 25$</div>
+    <div>💰 Emulator: 800₺ — 40$</div>
+
+    <div class="sep"></div>
+
+    <b>♾️ Lifetime</b>
+    <div>💰 Non-Root: 3500₺ — 90$</div>
+    <div>💰 Root: 3000₺ — 80$</div>
+    <div>💰 Emulator: 3500₺ — 90$</div>
+  </div>
+
+  <a class="buy" href="https://discord.gg/jCbKykczSS" target="_blank">BUY</a>
+</div>
+
+<!-- INTERNAL -->
+<div class="section">
+  <span class="tag int">🔴 INTERNAL</span>
+  <h2>Critical Ops Hack (Internal)</h2>
+
+  <div class="price">
+    <b>🕓 Daily</b>
+    <div>💰 Root: 70₺ — 3$</div>
+    <div>💰 Emulator: 100₺ — 3$</div>
+
+    <div class="sep"></div>
+
+    <b>📆 Weekly</b>
+    <div>💰 Non-Root: 180₺ — 7$</div>
+    <div>💰 Root: 150₺ — 5$</div>
+    <div>💰 Emulator: 160₺ — 5$</div>
+
+    <div class="sep"></div>
+
+    <b>🗓️ Monthly</b>
+    <div>💰 Non-Root: 550₺ — 20$</div>
+    <div>💰 Root: 450₺ — 15$</div>
+    <div>💰 Emulator: 450₺ — 15$</div>
+  </div>
+
+  <a class="buy" href="https://discord.gg/jCbKykczSS" target="_blank">BUY</a>
+</div>
+
+</div>
 </body>
-</html>
+      </html>

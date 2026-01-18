@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WHSKY</title>
 
 <style>
 *{
@@ -13,19 +13,17 @@
 body{
   margin:0;
   min-height:100vh;
-  background:
-    radial-gradient(circle at top,#2b0d4f 0%,#0c0218 55%,#050008 100%);
+  background:radial-gradient(circle at top,#2b0d4f 0%,#0c0218 55%,#050008 100%);
   color:#fff
 }
 .container{
   max-width:1100px;
   margin:auto;
-  padding:40px 20px 90px
+  padding:40px 20px 80px
 }
 h1{
   text-align:center;
   margin-bottom:35px;
-  font-size:26px;
   letter-spacing:1px
 }
 .section{margin-top:55px}
@@ -74,21 +72,26 @@ h1{
 .buy.pink{
   background:linear-gradient(90deg,#b46cff,#ff77e9)
 }
-.payments{
-  margin-top:30px;
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-  opacity:.9
+
+/* PAYMENT */
+.payment{
+  margin-top:60px;
+  text-align:center
 }
-.payments span{
+.pay-grid{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:14px
+}
+.pay{
   background:rgba(255,255,255,.08);
-  padding:10px 16px;
-  border-radius:20px;
-  font-size:13px;
+  padding:12px;
+  border-radius:16px;
+  font-size:14px;
   border:1px solid rgba(255,255,255,.15)
 }
+
 footer{
   position:fixed;
   bottom:0;
@@ -107,105 +110,109 @@ footer{
 
 <div class="container">
 
-  <h1>🎮 External</h1>
+<h1>External</h1>
 
-  <div class="grid">
-    <div class="card">
-      <h2>Daily</h2>
-      <ul>
-        <li>NoRoot (Need vPhoneOS VIP) — $7</li>
-        <li>Root — $5</li>
-        <li>Emulator — $7</li>
-      </ul>
-      <button class="buy" onclick="goDiscord()">BUY</button>
-    </div>
-
-    <div class="card">
-      <h2>Weekly</h2>
-      <ul>
-        <li>NoRoot (Need vPhoneOS VIP) — $20</li>
-        <li>Root — $15</li>
-        <li>Emulator — $20</li>
-      </ul>
-      <button class="buy" onclick="goDiscord()">BUY</button>
-    </div>
-
-    <div class="card">
-      <h2>Monthly</h2>
-      <ul>
-        <li>NoRoot (Need vPhoneOS VIP) — $40</li>
-        <li>Root — $25</li>
-        <li>Emulator — $40</li>
-      </ul>
-      <button class="buy" onclick="goDiscord()">BUY</button>
-    </div>
-
-    <div class="card">
-      <h2>Lifetime</h2>
-      <ul>
-        <li>NoRoot (Need vPhoneOS VIP) — $90</li>
-        <li>Root — $80</li>
-        <li>Emulator — $90</li>
-      </ul>
-      <button class="buy" onclick="goDiscord()">BUY</button>
-    </div>
+<div class="grid">
+  <div class="card">
+    <h2>Daily</h2>
+    <ul>
+      <li>NoRoot (Need vPhoneOS VIP) — $7</li>
+      <li>Root — $5</li>
+      <li>Emulator — $7</li>
+    </ul>
+    <button class="buy" onclick="go()">BUY</button>
   </div>
 
-  <div class="section">
-    <h1>🔒 Internal</h1>
-
-    <div class="grid">
-      <div class="card">
-        <h2>Daily</h2>
-        <ul>
-          <li>Root — $3</li>
-          <li>Emulator — $3</li>
-        </ul>
-        <button class="buy pink" onclick="goDiscord()">BUY</button>
-      </div>
-
-      <div class="card">
-        <h2>Weekly</h2>
-        <ul>
-          <li>NoRoot (Need vPhoneOS VIP) — $10</li>
-          <li>Root — $5</li>
-          <li>Emulator — $7</li>
-        </ul>
-        <button class="buy pink" onclick="goDiscord()">BUY</button>
-      </div>
-
-      <div class="card">
-        <h2>Monthly</h2>
-        <ul>
-          <li>NoRoot (Need vPhoneOS VIP) — $20</li>
-          <li>Root — $15</li>
-          <li>Emulator — $17</li>
-        </ul>
-        <button class="buy pink" onclick="goDiscord()">BUY</button>
-      </div>
-    </div>
+  <div class="card">
+    <h2>Weekly</h2>
+    <ul>
+      <li>NoRoot (Need vPhoneOS VIP) — $20</li>
+      <li>Root — $15</li>
+      <li>Emulator — $20</li>
+    </ul>
+    <button class="buy" onclick="go()">BUY</button>
   </div>
 
-  <div class="section">
-    <h1>💳 Payment Methods</h1>
-    <div class="payments">
-      <span>💸 Crypto</span>
-      <span>💳 Credit Card</span>
-      <span>🪙 USDT</span>
-      <span>🎁 Gift Card</span>
-      <span>📱 Mobile Payment</span>
-    </div>
+  <div class="card">
+    <h2>Monthly</h2>
+    <ul>
+      <li>NoRoot (Need vPhoneOS VIP) — $40</li>
+      <li>Root — $25</li>
+      <li>Emulator — $40</li>
+    </ul>
+    <button class="buy" onclick="go()">BUY</button>
   </div>
+
+  <div class="card">
+    <h2>Lifetime</h2>
+    <ul>
+      <li>NoRoot (Need vPhoneOS VIP) — $90</li>
+      <li>Root — $80</li>
+      <li>Emulator — $90</li>
+    </ul>
+    <button class="buy" onclick="go()">BUY</button>
+  </div>
+</div>
+
+<div class="section">
+<h1>Internal</h1>
+
+<div class="grid">
+  <div class="card">
+    <h2>Daily</h2>
+    <ul>
+      <li>Root — $3</li>
+      <li>Emulator — $3</li>
+    </ul>
+    <button class="buy pink" onclick="go()">BUY</button>
+  </div>
+
+  <div class="card">
+    <h2>Weekly</h2>
+    <ul>
+      <li>NoRoot (Need vPhoneOS VIP) — $10</li>
+      <li>Root — $5</li>
+      <li>Emulator — $7</li>
+    </ul>
+    <button class="buy pink" onclick="go()">BUY</button>
+  </div>
+
+  <div class="card">
+    <h2>Monthly</h2>
+    <ul>
+      <li>NoRoot (Need vPhoneOS VIP) — $20</li>
+      <li>Root — $15</li>
+      <li>Emulator — $17</li>
+    </ul>
+    <button class="buy pink" onclick="go()">BUY</button>
+  </div>
+</div>
+</div>
+
+<!-- PAYMENT METHODS -->
+<div class="payment">
+<h2>💳 PAYMENT METHODS</h2>
+<div class="pay-grid">
+  <div class="pay">💳 Card</div>
+  <div class="pay">🏦 IBAN</div>
+  <div class="pay">🌍 Western Union</div>
+  <div class="pay">🔁 Revolut</div>
+  <div class="pay">🪙 Binance</div>
+  <div class="pay">🎮 Gift Card</div>
+  <div class="pay">🛒 Shopier</div>
+  <div class="pay">💎 Papara</div>
+</div>
+</div>
 
 </div>
 
-<footer>© 2026 Store — All Rights Reserved</footer>
+<footer>© 2026 WHSKY</footer>
 
 <script>
-function goDiscord(){
-  window.location.href="https://discord.gg/INVITEKODUN";
+function go(){
+  window.location.href="https://discord.gg/whisky";
 }
 </script>
 
 </body>
-  </html>
+</html>

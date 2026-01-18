@@ -19,29 +19,48 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== STAR BACKGROUND ===== */
+/* ===== LOADING ===== */
+#loader{
+  position:fixed;inset:0;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:fadeOut 1s ease forwards;
+  animation-delay:3s;
+}
+#loader h1{
+  color:var(--neon);
+  letter-spacing:6px;
+  font-size:48px;
+  text-shadow:0 0 30px var(--neon);
+  animation:pulse 1.2s infinite;
+}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
+
+/* ===== STAR BG ===== */
 .stars,.stars2,.stars3{
-  position:fixed; top:0; left:0; right:0; bottom:0;
+  position:fixed;inset:0;
   background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Ccircle cx='1' cy='1' r='1' fill='white'/%3E%3C/svg%3E") repeat;
   z-index:-3;
   animation: moveStars 200s linear infinite;
 }
-.stars2{opacity:.5; animation-duration:300s}
-.stars3{opacity:.3; animation-duration:400s}
-@keyframes moveStars{from{background-position:0 0}to{background-position:-10000px 5000px}}
+.stars2{opacity:.5;animation-duration:300s}
+.stars3{opacity:.3;animation-duration:400s}
+@keyframes moveStars{to{background-position:-10000px 5000px}}
 
 .container{max-width:1200px;margin:auto;padding:20px}
 
-/* ===== HEADERS ===== */
 h1{
   text-align:center;
   font-size:44px;
   letter-spacing:5px;
   text-shadow:0 0 20px var(--neon);
 }
-h2{text-align:center;opacity:.95}
+h2{text-align:center}
 
-/* ===== BADGES ===== */
 .badges{text-align:center;margin:20px 0}
 .badges span{
   display:inline-block;margin:6px;padding:8px 14px;border-radius:20px;
@@ -49,37 +68,25 @@ h2{text-align:center;opacity:.95}
   font-size:14px
 }
 
-/* ===== LIMITED ===== */
 .limited{
-  text-align:center;margin:20px 0;font-weight:700;
-  color:#ffde59; animation:pulse 1.4s infinite;
-}
-@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
-
-.section{
-  margin-top:40px;padding:25px;border-radius:16px
-}
-.external{
-  border:2px solid var(--neon);
-  box-shadow:0 0 30px #00f7ff66
-}
-.internal{
-  border:2px solid var(--red);
-  box-shadow:0 0 30px #ff3b3b66
+  text-align:center;margin:20px 0;font-weight:800;
+  color:#ffde59;animation:pulse 1.4s infinite;
 }
 
-/* ===== CARDS ===== */
+.section{margin-top:40px;padding:25px;border-radius:16px}
+.external{border:2px solid var(--neon);box-shadow:0 0 30px #00f7ff66}
+.internal{border:2px solid var(--red);box-shadow:0 0 30px #ff3b3b66}
+
 .card{
   background:rgba(0,0,0,.6);
   margin:15px 0;padding:18px;border-radius:14px;
   transition:.3s
 }
-.card:hover{transform:scale(1.03);box-shadow:0 0 18px #ffffff33}
+.card:hover{transform:scale(1.03)}
 
-/* ===== BUY ===== */
 .buy{
   margin-top:12px;width:100%;padding:14px;border:none;border-radius:12px;
-  font-size:16px;font-weight:800;cursor:pointer;
+  font-size:16px;font-weight:900;cursor:pointer;
   background:linear-gradient(90deg,var(--neon),#00b3ff);
   color:#000;box-shadow:0 0 18px #00f7ff99
 }
@@ -89,26 +96,49 @@ h2{text-align:center;opacity:.95}
 }
 .buy:hover{transform:scale(1.05)}
 
-/* ===== PAYMENTS ===== */
+.why{
+  margin-top:40px;
+  padding:25px;
+  border-radius:16px;
+  background:rgba(0,0,0,.6);
+}
+.why ul{list-style:none;padding:0}
+.why li{margin:10px 0}
+
+.preview{
+  margin-top:40px;
+  padding:25px;
+  border-radius:16px;
+  background:linear-gradient(145deg,#111,#000);
+  box-shadow:0 0 25px #00f7ff33;
+  text-align:center;
+}
+.preview span{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:12px;
+  background:#000;
+  box-shadow:0 0 15px #00f7ff55;
+}
+
 .payments{
   margin-top:40px;padding:25px;border-radius:16px;
-  background:rgba(0,0,0,.6);box-shadow:0 0 20px #ffffff22
+  background:rgba(0,0,0,.6)
 }
 .payments ul{
   list-style:none;padding:0;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px
 }
 .payments li{
-  background:#0b0b0b;padding:14px;text-align:center;border-radius:12px;
-  box-shadow:0 0 12px #000
+  background:#0b0b0b;padding:14px;text-align:center;border-radius:12px
 }
 
-/* ===== FOOTER ===== */
-.footer{text-align:center;opacity:.6;margin:50px 0 15px;font-size:13px}
+.footer{text-align:center;opacity:.55;margin:50px 0 15px;font-size:12px}
 </style>
 </head>
 
 <body>
+<div id="loader"><h1>WHSKY</h1></div>
 <div class="stars"></div><div class="stars2"></div><div class="stars3"></div>
 
 <div class="container">
@@ -117,46 +147,62 @@ h2{text-align:center;opacity:.95}
 
 <div class="badges">
   <span>🛡 Advanced Protection</span>
-  <span>⚡ Fast Setup</span>
+  <span>⚡ Instant Delivery</span>
   <span>🎧 24/7 Support</span>
-  <span>💎 Premium Access</span>
+  <span>💎 Private Access</span>
 </div>
 
-<div class="limited">🚨 LIMITED STOCK — INSTANT DELIVERY</div>
+<div class="limited">🚨 LIMITED ACCESS — HIGH DEMAND</div>
+
+<div class="why">
+<h2>🔥 Why Choose WHSKY?</h2>
+<ul>
+<li>✅ Clean & optimized builds</li>
+<li>✅ Low-profile & private access</li>
+<li>✅ Fast setup, no complicated steps</li>
+<li>✅ Premium UI & stable performance</li>
+<li>✅ Trusted by competitive players</li>
+</ul>
+</div>
+
+<div class="preview">
+<h2>🎥 Live Dashboard Preview</h2>
+<span>Secure Panel • Status: ONLINE • Build: STABLE</span>
+</div>
 
 <!-- EXTERNAL -->
 <div class="section external">
 <h2>💠 Critical Ops Hack (External)</h2>
 
 <div class="card">
-<b>🕒 Daily</b><br>
-💰 Non-Root (Need VPhoneOS VIP): 200₺ — $7<br>
-💰 Root: 100₺ — $5<br>
-💰 Emulator: 200₺ — $7<br>
+🕒 <b>Daily</b><br>
+Non-Root (Need VPhoneOS VIP): 200₺ — $7<br>
+Root: 100₺ — $5<br>
+Emulator: 200₺ — $7<br>
 <button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>📆 Weekly</b><br>
-💰 Non-Root (Need VPhoneOS VIP): 400₺ — $20<br>
-💰 Root: 300₺ — $15<br>
-💰 Emulator: 400₺ — $20<br>
+📆 <b>Weekly</b><br>
+Non-Root (Need VPhoneOS VIP): 400₺ — $20<br>
+Root: 300₺ — $15<br>
+Emulator: 400₺ — $20<br>
 <button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>🗓 Monthly</b><br>
-💰 Non-Root (Need VPhoneOS VIP): 1000₺ — $40<br>
-💰 Root: 700₺ — $25<br>
-💰 Emulator: 800₺ — $40<br>
+🗓 <b>Monthly</b><br>
+Non-Root (Need VPhoneOS VIP): 1000₺ — $40<br>
+Root: 700₺ — $25<br>
+Emulator: 800₺ — $40<br>
 <button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>♾ Lifetime</b><br>
-💰 Non-Root (Need VPhoneOS VIP): 3500₺ — $90<br>
-💰 Root: 3000₺ — $80<br>
-💰 Emulator: 3500₺ — $90<br>
+♾ <b>Lifetime</b><br>
+Non-Root (Need VPhoneOS VIP): 3500₺ — $90<br>
+Root: 3000₺ — $80<br>
+Emulator: 3500₺ — $90<br>
 <button class="buy" onclick="go()">BUY</button>
 </div>
 </div>
@@ -166,30 +212,29 @@ h2{text-align:center;opacity:.95}
 <h2>🔐 Critical Ops Hack (Internal)</h2>
 
 <div class="card">
-<b>🕓 Daily</b><br>
-💰 Root: 100₺ — $3<br>
-💰 Emulator: 130₺ — $3<br>
+🕓 <b>Daily</b><br>
+Root: 100₺ — $3<br>
+Emulator: 130₺ — $3<br>
 <button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>📆 Weekly</b><br>
-💰 Non-Root: 250₺ — $10<br>
-💰 Root: 200₺ — $5<br>
-💰 Emulator: 250₺ — $7<br>
+📆 <b>Weekly</b><br>
+Non-Root: 250₺ — $10<br>
+Root: 200₺ — $5<br>
+Emulator: 250₺ — $7<br>
 <button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>🗓 Monthly</b><br>
-💰 Non-Root: 650₺ — $20<br>
-💰 Root: 550₺ — $15<br>
-💰 Emulator: 600₺ — $17<br>
+🗓 <b>Monthly</b><br>
+Non-Root: 650₺ — $20<br>
+Root: 550₺ — $15<br>
+Emulator: 600₺ — $17<br>
 <button class="buy" onclick="go()">BUY</button>
 </div>
 </div>
 
-<!-- PAYMENTS -->
 <div class="payments">
 <h2>💳 Payment Methods</h2>
 <ul>
@@ -205,17 +250,12 @@ h2{text-align:center;opacity:.95}
 </div>
 
 <div class="footer">
-© WHSKY — Visual demo page. All prices & content are representation only.
+Visual demo page. No guarantees provided. All content is representational.
 </div>
 </div>
 
-<!-- SOUND + REDIRECT -->
-<audio id="hoverSound" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="></audio>
 <script>
-function go(){ location.href='https://discord.gg/whisky'; }
-document.querySelectorAll('.buy').forEach(b=>{
-  b.addEventListener('mouseenter',()=>document.getElementById('hoverSound').play());
-});
+function go(){location.href='https://discord.gg/whisky'}
 </script>
 </body>
-  </html>
+</html>

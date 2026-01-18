@@ -1,261 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WHSKY – Critical Ops</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Game Store</title>
 
 <style>
-*{box-sizing:border-box}
-:root{
-  --neon:#00f7ff;
-  --red:#ff3b3b;
-}
-body{
-  margin:0;
-  font-family:'Segoe UI',Arial,sans-serif;
-  color:#fff;
-  background:#000;
-  overflow-x:hidden;
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
 }
 
-/* ===== LOADING ===== */
-#loader{
-  position:fixed;inset:0;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  animation:fadeOut 1s ease forwards;
-  animation-delay:3s;
-}
-#loader h1{
-  color:var(--neon);
-  letter-spacing:6px;
-  font-size:48px;
-  text-shadow:0 0 30px var(--neon);
-  animation:pulse 1.2s infinite;
-}
-@keyframes fadeOut{to{opacity:0;visibility:hidden}}
-@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
-
-/* ===== STAR BG ===== */
-.stars,.stars2,.stars3{
-  position:fixed;inset:0;
-  background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Ccircle cx='1' cy='1' r='1' fill='white'/%3E%3C/svg%3E") repeat;
-  z-index:-3;
-  animation: moveStars 200s linear infinite;
-}
-.stars2{opacity:.5;animation-duration:300s}
-.stars3{opacity:.3;animation-duration:400s}
-@keyframes moveStars{to{background-position:-10000px 5000px}}
-
-.container{max-width:1200px;margin:auto;padding:20px}
-
-h1{
-  text-align:center;
-  font-size:44px;
-  letter-spacing:5px;
-  text-shadow:0 0 20px var(--neon);
-}
-h2{text-align:center}
-
-.badges{text-align:center;margin:20px 0}
-.badges span{
-  display:inline-block;margin:6px;padding:8px 14px;border-radius:20px;
-  background:#0b0b0b;box-shadow:0 0 12px var(--neon);
-  font-size:14px
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, #2a0a4a 0%, #0b0215 55%, #050008 100%);
+  color: #fff;
 }
 
-.limited{
-  text-align:center;margin:20px 0;font-weight:800;
-  color:#ffde59;animation:pulse 1.4s infinite;
+/* container */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px 80px;
 }
 
-.section{margin-top:40px;padding:25px;border-radius:16px}
-.external{border:2px solid var(--neon);box-shadow:0 0 30px #00f7ff66}
-.internal{border:2px solid var(--red);box-shadow:0 0 30px #ff3b3b66}
-
-.card{
-  background:rgba(0,0,0,.6);
-  margin:15px 0;padding:18px;border-radius:14px;
-  transition:.3s
-}
-.card:hover{transform:scale(1.03)}
-
-.buy{
-  margin-top:12px;width:100%;padding:14px;border:none;border-radius:12px;
-  font-size:16px;font-weight:900;cursor:pointer;
-  background:linear-gradient(90deg,var(--neon),#00b3ff);
-  color:#000;box-shadow:0 0 18px #00f7ff99
-}
-.internal .buy{
-  background:linear-gradient(90deg,var(--red),#ff7b7b);
-  box-shadow:0 0 18px #ff3b3b99
-}
-.buy:hover{transform:scale(1.05)}
-
-.why{
-  margin-top:40px;
-  padding:25px;
-  border-radius:16px;
-  background:rgba(0,0,0,.6);
-}
-.why ul{list-style:none;padding:0}
-.why li{margin:10px 0}
-
-.preview{
-  margin-top:40px;
-  padding:25px;
-  border-radius:16px;
-  background:linear-gradient(145deg,#111,#000);
-  box-shadow:0 0 25px #00f7ff33;
-  text-align:center;
-}
-.preview span{
-  display:inline-block;
-  padding:10px 18px;
-  border-radius:12px;
-  background:#000;
-  box-shadow:0 0 15px #00f7ff55;
+/* title */
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 28px;
+  letter-spacing: 1px;
 }
 
-.payments{
-  margin-top:40px;padding:25px;border-radius:16px;
-  background:rgba(0,0,0,.6)
-}
-.payments ul{
-  list-style:none;padding:0;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px
-}
-.payments li{
-  background:#0b0b0b;padding:14px;text-align:center;border-radius:12px
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-.footer{text-align:center;opacity:.55;margin:50px 0 15px;font-size:12px}
+/* cards */
+.card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 0 25px rgba(0,255,200,0.15);
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 45px rgba(0,255,200,0.35);
+}
+
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.card ul li {
+  margin-bottom: 6px;
+}
+
+/* buy button */
+.buy {
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  color: #000;
+  background: linear-gradient(90deg,#00ffd5,#00ffa2);
+}
+
+.buy.pink {
+  background: linear-gradient(90deg,#b46cff,#ff77e9);
+}
+
+/* section divider */
+.section {
+  margin-top: 60px;
+}
+
+/* footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  font-size: 13px;
+  opacity: 0.8;
+}
 </style>
 </head>
 
 <body>
-<div id="loader"><h1>WHSKY</h1></div>
-<div class="stars"></div><div class="stars2"></div><div class="stars3"></div>
 
 <div class="container">
-<h1>WHSKY</h1>
-<h2>Critical Ops Premium Services</h2>
+  <h1>🎮 Game Store (External)</h1>
 
-<div class="badges">
-  <span>🛡 Advanced Protection</span>
-  <span>⚡ Instant Delivery</span>
-  <span>🎧 24/7 Support</span>
-  <span>💎 Private Access</span>
+  <div class="grid">
+    <div class="card">
+      <h2>Daily</h2>
+      <ul>
+        <li>Non-Root — $7</li>
+        <li>Root — $5</li>
+        <li>Emulator — $7</li>
+      </ul>
+      <button class="buy" onclick="goDiscord()">BUY</button>
+    </div>
+
+    <div class="card">
+      <h2>Weekly</h2>
+      <ul>
+        <li>Non-Root — $20</li>
+        <li>Root — $15</li>
+        <li>Emulator — $20</li>
+      </ul>
+      <button class="buy" onclick="goDiscord()">BUY</button>
+    </div>
+
+    <div class="card">
+      <h2>Monthly</h2>
+      <ul>
+        <li>Non-Root — $40</li>
+        <li>Root — $25</li>
+        <li>Emulator — $40</li>
+      </ul>
+      <button class="buy" onclick="goDiscord()">BUY</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h1>🔒 Internal Access</h1>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Daily</h2>
+        <ul>
+          <li>Root — $3</li>
+          <li>Emulator — $3</li>
+        </ul>
+        <button class="buy pink" onclick="goDiscord()">BUY</button>
+      </div>
+
+      <div class="card">
+        <h2>Weekly</h2>
+        <ul>
+          <li>Non-Root — $10</li>
+          <li>Root — $5</li>
+          <li>Emulator — $7</li>
+        </ul>
+        <button class="buy pink" onclick="goDiscord()">BUY</button>
+      </div>
+
+      <div class="card">
+        <h2>Monthly</h2>
+        <ul>
+          <li>Non-Root — $20</li>
+          <li>Root — $15</li>
+          <li>Emulator — $17</li>
+        </ul>
+        <button class="buy pink" onclick="goDiscord()">BUY</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="limited">🚨 LIMITED ACCESS — HIGH DEMAND</div>
-
-<div class="why">
-<h2>🔥 Why Choose WHSKY?</h2>
-<ul>
-<li>✅ Clean & optimized builds</li>
-<li>✅ Low-profile & private access</li>
-<li>✅ Fast setup, no complicated steps</li>
-<li>✅ Premium UI & stable performance</li>
-<li>✅ Trusted by competitive players</li>
-</ul>
-</div>
-
-<div class="preview">
-<h2>🎥 Live Dashboard Preview</h2>
-<span>Secure Panel • Status: ONLINE • Build: STABLE</span>
-</div>
-
-<!-- EXTERNAL -->
-<div class="section external">
-<h2>💠 Critical Ops Hack (External)</h2>
-
-<div class="card">
-🕒 <b>Daily</b><br>
-Non-Root (Need VPhoneOS VIP): 200₺ — $7<br>
-Root: 100₺ — $5<br>
-Emulator: 200₺ — $7<br>
-<button class="buy" onclick="go()">BUY</button>
-</div>
-
-<div class="card">
-📆 <b>Weekly</b><br>
-Non-Root (Need VPhoneOS VIP): 400₺ — $20<br>
-Root: 300₺ — $15<br>
-Emulator: 400₺ — $20<br>
-<button class="buy" onclick="go()">BUY</button>
-</div>
-
-<div class="card">
-🗓 <b>Monthly</b><br>
-Non-Root (Need VPhoneOS VIP): 1000₺ — $40<br>
-Root: 700₺ — $25<br>
-Emulator: 800₺ — $40<br>
-<button class="buy" onclick="go()">BUY</button>
-</div>
-
-<div class="card">
-♾ <b>Lifetime</b><br>
-Non-Root (Need VPhoneOS VIP): 3500₺ — $90<br>
-Root: 3000₺ — $80<br>
-Emulator: 3500₺ — $90<br>
-<button class="buy" onclick="go()">BUY</button>
-</div>
-</div>
-
-<!-- INTERNAL -->
-<div class="section internal">
-<h2>🔐 Critical Ops Hack (Internal)</h2>
-
-<div class="card">
-🕓 <b>Daily</b><br>
-Root: 100₺ — $3<br>
-Emulator: 130₺ — $3<br>
-<button class="buy" onclick="go()">BUY</button>
-</div>
-
-<div class="card">
-📆 <b>Weekly</b><br>
-Non-Root: 250₺ — $10<br>
-Root: 200₺ — $5<br>
-Emulator: 250₺ — $7<br>
-<button class="buy" onclick="go()">BUY</button>
-</div>
-
-<div class="card">
-🗓 <b>Monthly</b><br>
-Non-Root: 650₺ — $20<br>
-Root: 550₺ — $15<br>
-Emulator: 600₺ — $17<br>
-<button class="buy" onclick="go()">BUY</button>
-</div>
-</div>
-
-<div class="payments">
-<h2>💳 Payment Methods</h2>
-<ul>
-<li>💳 Credit / Debit Card</li>
-<li>🏦 IBAN</li>
-<li>🌍 Western Union</li>
-<li>💱 Revolut</li>
-<li>🪙 Binance</li>
-<li>🎁 Gift Card</li>
-<li>🛒 Shopier</li>
-<li>💰 Papara</li>
-</ul>
-</div>
-
-<div class="footer">
-Visual demo page. No guarantees provided. All content is representational.
-</div>
-</div>
+<footer>
+  © 2026 Game Store — All rights reserved
+</footer>
 
 <script>
-function go(){location.href='https://discord.gg/whisky'}
+function goDiscord() {
+  window.location.href = "https://discord.gg/INVITEKODUN";
+}
 </script>
+
 </body>
 </html>

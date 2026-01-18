@@ -6,81 +6,123 @@
 <title>WHSKY – Critical Ops</title>
 
 <style>
+*{box-sizing:border-box}
+:root{
+  --neon:#00f7ff;
+  --red:#ff3b3b;
+}
 body{
   margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(circle at top, #0f2027, #000);
+  font-family:'Segoe UI',Arial,sans-serif;
   color:#fff;
+  background:#000;
+  overflow-x:hidden;
 }
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
+/* ===== STAR BACKGROUND ===== */
+.stars,.stars2,.stars3{
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Ccircle cx='1' cy='1' r='1' fill='white'/%3E%3C/svg%3E") repeat;
+  z-index:-3;
+  animation: moveStars 200s linear infinite;
 }
+.stars2{opacity:.5; animation-duration:300s}
+.stars3{opacity:.3; animation-duration:400s}
+@keyframes moveStars{from{background-position:0 0}to{background-position:-10000px 5000px}}
 
-h1,h2{
+.container{max-width:1200px;margin:auto;padding:20px}
+
+/* ===== HEADERS ===== */
+h1{
   text-align:center;
+  font-size:44px;
+  letter-spacing:5px;
+  text-shadow:0 0 20px var(--neon);
 }
+h2{text-align:center;opacity:.95}
+
+/* ===== BADGES ===== */
+.badges{text-align:center;margin:20px 0}
+.badges span{
+  display:inline-block;margin:6px;padding:8px 14px;border-radius:20px;
+  background:#0b0b0b;box-shadow:0 0 12px var(--neon);
+  font-size:14px
+}
+
+/* ===== LIMITED ===== */
+.limited{
+  text-align:center;margin:20px 0;font-weight:700;
+  color:#ffde59; animation:pulse 1.4s infinite;
+}
+@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
 
 .section{
-  margin-top:40px;
-  padding:20px;
-  border-radius:14px;
+  margin-top:40px;padding:25px;border-radius:16px
 }
-
 .external{
-  border:2px solid #00f7ff;
-  box-shadow:0 0 20px #00f7ff55;
+  border:2px solid var(--neon);
+  box-shadow:0 0 30px #00f7ff66
 }
-
 .internal{
-  border:2px solid #ff3b3b;
-  box-shadow:0 0 20px #ff3b3b55;
+  border:2px solid var(--red);
+  box-shadow:0 0 30px #ff3b3b66
 }
 
+/* ===== CARDS ===== */
 .card{
-  background:#0b0b0b;
-  margin:15px 0;
-  padding:15px;
-  border-radius:12px;
+  background:rgba(0,0,0,.6);
+  margin:15px 0;padding:18px;border-radius:14px;
+  transition:.3s
 }
+.card:hover{transform:scale(1.03);box-shadow:0 0 18px #ffffff33}
 
+/* ===== BUY ===== */
 .buy{
-  margin-top:10px;
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  background:linear-gradient(90deg,#00f7ff,#00b3ff);
-  color:#000;
+  margin-top:12px;width:100%;padding:14px;border:none;border-radius:12px;
+  font-size:16px;font-weight:800;cursor:pointer;
+  background:linear-gradient(90deg,var(--neon),#00b3ff);
+  color:#000;box-shadow:0 0 18px #00f7ff99
 }
-
-.buy:hover{
-  transform:scale(1.03);
-}
-
 .internal .buy{
-  background:linear-gradient(90deg,#ff3b3b,#ff7b7b);
+  background:linear-gradient(90deg,var(--red),#ff7b7b);
+  box-shadow:0 0 18px #ff3b3b99
+}
+.buy:hover{transform:scale(1.05)}
+
+/* ===== PAYMENTS ===== */
+.payments{
+  margin-top:40px;padding:25px;border-radius:16px;
+  background:rgba(0,0,0,.6);box-shadow:0 0 20px #ffffff22
+}
+.payments ul{
+  list-style:none;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px
+}
+.payments li{
+  background:#0b0b0b;padding:14px;text-align:center;border-radius:12px;
+  box-shadow:0 0 12px #000
 }
 
-.footer{
-  text-align:center;
-  opacity:.6;
-  margin:40px 0 10px;
-  font-size:13px;
-}
+/* ===== FOOTER ===== */
+.footer{text-align:center;opacity:.6;margin:50px 0 15px;font-size:13px}
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="stars"></div><div class="stars2"></div><div class="stars3"></div>
 
-<h1>🚀 WHSKY</h1>
-<h2>Critical Ops Hack</h2>
+<div class="container">
+<h1>WHSKY</h1>
+<h2>Critical Ops Premium Services</h2>
+
+<div class="badges">
+  <span>🛡 Advanced Protection</span>
+  <span>⚡ Fast Setup</span>
+  <span>🎧 24/7 Support</span>
+  <span>💎 Premium Access</span>
+</div>
+
+<div class="limited">🚨 LIMITED STOCK — INSTANT DELIVERY</div>
 
 <!-- EXTERNAL -->
 <div class="section external">
@@ -91,7 +133,7 @@ h1,h2{
 💰 Non-Root (Need VPhoneOS VIP): 200₺ — $7<br>
 💰 Root: 100₺ — $5<br>
 💰 Emulator: 200₺ — $7<br>
-<button class="buy" onclick="window.location.href='https://discord.gg/whisky'">BUY</button>
+<button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
@@ -99,23 +141,23 @@ h1,h2{
 💰 Non-Root (Need VPhoneOS VIP): 400₺ — $20<br>
 💰 Root: 300₺ — $15<br>
 💰 Emulator: 400₺ — $20<br>
-<button class="buy" onclick="window.location.href='https://discord.gg/whisky'">BUY</button>
+<button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>🗓️ Monthly</b><br>
+<b>🗓 Monthly</b><br>
 💰 Non-Root (Need VPhoneOS VIP): 1000₺ — $40<br>
 💰 Root: 700₺ — $25<br>
 💰 Emulator: 800₺ — $40<br>
-<button class="buy" onclick="window.location.href='https://discord.gg/whisky'">BUY</button>
+<button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>♾️ Lifetime</b><br>
+<b>♾ Lifetime</b><br>
 💰 Non-Root (Need VPhoneOS VIP): 3500₺ — $90<br>
 💰 Root: 3000₺ — $80<br>
 💰 Emulator: 3500₺ — $90<br>
-<button class="buy" onclick="window.location.href='https://discord.gg/whisky'">BUY</button>
+<button class="buy" onclick="go()">BUY</button>
 </div>
 </div>
 
@@ -127,7 +169,7 @@ h1,h2{
 <b>🕓 Daily</b><br>
 💰 Root: 100₺ — $3<br>
 💰 Emulator: 130₺ — $3<br>
-<button class="buy" onclick="window.location.href='https://discord.gg/whisky'">BUY</button>
+<button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
@@ -135,22 +177,45 @@ h1,h2{
 💰 Non-Root: 250₺ — $10<br>
 💰 Root: 200₺ — $5<br>
 💰 Emulator: 250₺ — $7<br>
-<button class="buy" onclick="window.location.href='https://discord.gg/whisky'">BUY</button>
+<button class="buy" onclick="go()">BUY</button>
 </div>
 
 <div class="card">
-<b>🗓️ Monthly</b><br>
+<b>🗓 Monthly</b><br>
 💰 Non-Root: 650₺ — $20<br>
 💰 Root: 550₺ — $15<br>
 💰 Emulator: 600₺ — $17<br>
-<button class="buy" onclick="window.location.href='https://discord.gg/whisky'">BUY</button>
+<button class="buy" onclick="go()">BUY</button>
 </div>
+</div>
+
+<!-- PAYMENTS -->
+<div class="payments">
+<h2>💳 Payment Methods</h2>
+<ul>
+<li>💳 Credit / Debit Card</li>
+<li>🏦 IBAN</li>
+<li>🌍 Western Union</li>
+<li>💱 Revolut</li>
+<li>🪙 Binance</li>
+<li>🎁 Gift Card</li>
+<li>🛒 Shopier</li>
+<li>💰 Papara</li>
+</ul>
 </div>
 
 <div class="footer">
-© WHSKY — All prices & content are visual representation only.
+© WHSKY — Visual demo page. All prices & content are representation only.
+</div>
 </div>
 
-</div>
+<!-- SOUND + REDIRECT -->
+<audio id="hoverSound" src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA="></audio>
+<script>
+function go(){ location.href='https://discord.gg/whisky'; }
+document.querySelectorAll('.buy').forEach(b=>{
+  b.addEventListener('mouseenter',()=>document.getElementById('hoverSound').play());
+});
+</script>
 </body>
-</html>
+  </html>

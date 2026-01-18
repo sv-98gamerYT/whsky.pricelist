@@ -1,144 +1,235 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WHSKY Pricelist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whsky Pricelist</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#06080f;
-  --card:#0c1020;
-  --line:rgba(0,255,200,.25);
-  --neon:#00ffe0;
-  --neon2:#00a3ff;
-  --red:#ff3b5c;
-  --green:#22ff88;
-}
-*{box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  margin:0;
-  font-family:'Orbitron',system-ui,Arial;
-  background:
-    radial-gradient(900px 400px at 50% -10%, #0e1636 0%, transparent 60%),
-    radial-gradient(700px 300px at 10% 10%, #08112a 0%, transparent 60%),
-    var(--bg);
-  color:#eaffff;
-}/* INTRO */ #intro{ position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:radial-gradient(circle at center,#0b1330,#04060c 70%); } #intro h1{ font-size:64px; letter-spacing:6px; margin:0; color:var(--neon); text-shadow: 0 0 10px var(--neon), 0 0 30px var(--neon), 0 0 60px var(--neon2); animation:glow 1.5s ease-in-out infinite alternate; } @keyframes glow{from{opacity:.7}to{opacity:1}}
+  font-family:'Orbitron',sans-serif;
+  color:#fff;
+  background:#05050a;
+  overflow-x:hidden;
+}
 
-.container{max-width:1100px;margin:auto;padding:26px 16px 70px} .header{display:flex;justify-content:center;align-items:center;margin-bottom:14px} .badge{padding:6px 12px;border-radius:999px;font-weight:700;font-size:12px} .badge.ext{background:rgba(34,255,136,.15);color:var(--green);border:1px solid rgba(34,255,136,.35)} .badge.int{background:rgba(255,59,92,.15);color:var(--red);border:1px solid rgba(255,59,92,.35)}
+/* STAR BACKGROUND */
+.stars, .stars2{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background-repeat:repeat;
+  z-index:-2;
+}
+.stars{
+  background-image:
+    radial-gradient(1px 1px at 20px 30px,#fff,transparent),
+    radial-gradient(1px 1px at 100px 80px,#fff,transparent),
+    radial-gradient(1px 1px at 200px 150px,#fff,transparent);
+  animation:moveStars 60s linear infinite;
+}
+.stars2{
+  background-image:
+    radial-gradient(1px 1px at 50px 50px,#0ff,transparent),
+    radial-gradient(1px 1px at 150px 120px,#0ff,transparent);
+  animation:moveStars 120s linear infinite;
+  opacity:.5;
+}
+@keyframes moveStars{
+  from{transform:translateY(0)}
+  to{transform:translateY(-1000px)}
+}
 
-.card{ background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)) , var(--card); border:1px solid var(--line); border-radius:18px; padding:18px; margin-top:18px; box-shadow:0 0 0 1px rgba(0,255,200,.08), 0 10px 40px rgba(0,0,0,.6); }
+/* INTRO */
+#intro{
+  position:fixed;inset:0;background:#000;
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;
+  animation:introOut 1s ease forwards;
+  animation-delay:3s;
+}
+#intro h1{
+  font-size:64px;letter-spacing:10px;
+  color:#00fff0;
+  text-shadow:0 0 30px #00fff0;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+@keyframes introOut{to{opacity:0;visibility:hidden}}
 
-h1,h2,h3{margin:8px 0;text-align:center} .neon{ color:var(--neon); text-shadow:0 0 10px var(--neon),0 0 30px var(--neon2); }
+/* SOUND */
+#soundToggle{
+  position:fixed;bottom:20px;right:20px;
+  background:#0ff;color:#000;
+  border:none;border-radius:50%;
+  width:48px;height:48px;
+  font-size:18px;cursor:pointer;
+  z-index:5;
+}
 
-.methods,.prices{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); } .method,.price-box{ background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55)); border:1px solid var(--line); border-radius:14px; padding:14px; } .method{display:flex;align-items:center;justify-content:center;font-weight:600}
+/* LAYOUT */
+.container{max-width:900px;margin:40px auto;padding:20px}
+.section{
+  background:rgba(10,10,25,.65);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:35px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 30px rgba(0,255,255,.05);
+}
+h2{text-align:center;margin-bottom:15px;color:#00fff0}
+.sep{margin:15px 0;border-top:1px dashed #333}
 
-.price-box ul{list-style:none;padding:0;margin:8px 0 0} .price-box li{padding:6px 0;border-bottom:1px dashed rgba(0,255,200,.25)} .price-box li:last-child{border-bottom:none}
+/* TAGS */
+.tag{
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:12px;
+  margin-bottom:10px;
+}
+.ext{background:#00aa66}
+.int{background:#aa0033}
 
-.buy{ margin-top:12px;width:100%;padding:12px;border:none;border-radius:12px; background:linear-gradient(135deg,var(--neon),var(--neon2)); color:#001012;font-weight:900;cursor:pointer; box-shadow:0 0 18px rgba(0,255,224,.6); } .buy:hover{filter:brightness(1.05)}
+/* PAYMENT */
+.pay-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:10px;
+}
+.pay{
+  background:rgba(0,0,0,.6);
+  border:1px solid #222;
+  padding:12px;border-radius:10px;
+  text-align:center;
+}
 
-.why{ display:grid;gap:10px;margin-top:16px } .why .item{ background:rgba(0,255,200,.06); border:1px solid var(--line); border-radius:12px;padding:10px 12px }
+/* PRICE */
+.price div{margin:6px 0}
 
-.footer{text-align:center;opacity:.75;margin-top:40px;font-size:12px}
-
-/* fade in after intro */ .fade{animation:fadeIn .8s ease forwards} @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}} </style>
-
+/* BUY */
+.buy{
+  display:block;width:220px;margin:25px auto 0;
+  padding:14px;text-align:center;
+  border-radius:30px;
+  background:#00fff0;color:#000;
+  text-decoration:none;font-weight:800;
+  transition:.2s;
+}
+.buy:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px #00fff0;
+}
+</style>
 </head>
-<body><!-- INTRO --><div id="intro"><h1>WHSKY</h1></div><div class="container fade" id="app" style="display:none"><h1 class="neon">PAYMENT METHODS</h1>
-<div class="card">
-  <div class="methods">
-    <div class="method">IBAN</div>
-    <div class="method">Western Union</div>
-    <div class="method">Binance</div>
-    <div class="method">Binance Giftcard</div>
-    <div class="method">Shopier</div>
-    <div class="method">İtemsatış</div>
-    <div class="method">Papara</div>
+
+<body>
+
+<div class="stars"></div>
+<div class="stars2"></div>
+
+<div id="intro"><h1>WHSKY</h1></div>
+
+<button id="soundToggle">🔇</button>
+<audio id="introSound" loop>
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-sci-fi-interface-zoom-890.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<!-- PAYMENT METHODS -->
+<div class="section">
+  <h2>💳 PAYMENT METHODS</h2>
+  <div class="pay-grid">
+    <div class="pay">💳 Card</div>
+    <div class="pay">🏦 IBAN</div>
+    <div class="pay">🌍 Western Union</div>
+    <div class="pay">🪙 Binance</div>
+    <div class="pay">🪙 Binance Giftcard</div>
+    <div class="pay">🛒 Shopier</div>
+    <div class="pay">🛍️ İtemsatış</div>
+    <div class="pay">💎 Papara</div>
   </div>
-</div><div class="card">
-  <div class="header"><span class="badge ext">EXTERNAL</span></div>
-  <h2 class="neon">Critical Ops Hack (External)</h2>
-  <div class="why">
-    <div class="item">🟢 Runs outside the game, no file modification</div>
-    <div class="item">🛡️ Lowest ban risk, safest option</div>
-    <div class="item">✅ Recommended choice</div>
+</div>
+
+<!-- EXTERNAL -->
+<div class="section">
+  <span class="tag ext">🟢 EXTERNAL</span>
+  <h2>Critical Ops Hack (External)</h2>
+
+  <div class="price">
+    <b>🕒 Daily</b>
+    <div>💰 Non-Root (Need vPhoneOS VIP): 200₺ — 7$</div>
+    <div>💰 Root: 100₺ — 5$</div>
+    <div>💰 Emulator: 200₺ — 7$</div>
+
+    <div class="sep"></div>
+
+    <b>📆 Weekly</b>
+    <div>💰 Non-Root (Need vPhoneOS VIP): 400₺ — 20$</div>
+    <div>💰 Root: 300₺ — 15$</div>
+    <div>💰 Emulator: 400₺ — 20$</div>
+
+    <div class="sep"></div>
+
+    <b>🗓️ Monthly</b>
+    <div>💰 Non-Root: 1000₺ — 40$</div>
+    <div>💰 Root: 700₺ — 25$</div>
+    <div>💰 Emulator: 800₺ — 40$</div>
+
+    <div class="sep"></div>
+
+    <b>♾️ Lifetime</b>
+    <div>💰 Non-Root: 3500₺ — 90$</div>
+    <div>💰 Root: 3000₺ — 80$</div>
+    <div>💰 Emulator: 3500₺ — 90$</div>
   </div>
-  <div class="prices">
-    <div class="price-box">
-      <h3>Daily</h3>
-      <ul>
-        <li>Non-Root (Need vPhoneOS VIP): 200₺ — $7</li>
-        <li>Root: 100₺ — $5</li>
-        <li>Emulator: 200₺ — $7</li>
-      </ul>
-      <button class="buy" onclick="go()">BUY</button>
-    </div>
-    <div class="price-box">
-      <h3>Weekly</h3>
-      <ul>
-        <li>Non-Root: 400₺ — $20</li>
-        <li>Root: 300₺ — $15</li>
-        <li>Emulator: 400₺ — $20</li>
-      </ul>
-      <button class="buy" onclick="go()">BUY</button>
-    </div>
-    <div class="price-box">
-      <h3>Monthly</h3>
-      <ul>
-        <li>Non-Root: 1000₺ — $40</li>
-        <li>Root: 700₺ — $25</li>
-        <li>Emulator: 800₺ — $40</li>
-      </ul>
-      <button class="buy" onclick="go()">BUY</button>
-    </div>
-    <div class="price-box">
-      <h3>Lifetime</h3>
-      <ul>
-        <li>Non-Root: 3500₺ — $90</li>
-        <li>Root: 3000₺ — $80</li>
-        <li>Emulator: 3500₺ — $90</li>
-      </ul>
-      <button class="buy" onclick="go()">BUY</button>
-    </div>
+
+  <a class="buy" href="https://discord.gg/jCbKykczSS" target="_blank">BUY</a>
+</div>
+
+<!-- INTERNAL -->
+<div class="section">
+  <span class="tag int">🔴 INTERNAL</span>
+  <h2>Critical Ops Hack (Internal)</h2>
+
+  <div class="price">
+    <b>🕓 Daily</b>
+    <div>💰 Root: 70₺ — 3$</div>
+    <div>💰 Emulator: 100₺ — 3$</div>
+
+    <div class="sep"></div>
+
+    <b>📆 Weekly</b>
+    <div>💰 Non-Root: 180₺ — 7$</div>
+    <div>💰 Root: 150₺ — 5$</div>
+    <div>💰 Emulator: 160₺ — 5$</div>
+
+    <div class="sep"></div>
+
+    <b>🗓️ Monthly</b>
+    <div>💰 Non-Root: 550₺ — 20$</div>
+    <div>💰 Root: 450₺ — 15$</div>
+    <div>💰 Emulator: 450₺ — 15$</div>
   </div>
-</div><div class="card">
-  <div class="header"><span class="badge int">INTERNAL</span></div>
-  <h2 class="neon">Critical Ops Hack (Internal)</h2>
-  <div class="prices">
-    <div class="price-box">
-      <h3>Daily</h3>
-      <ul>
-        <li>Root: 70₺ — $3</li>
-        <li>Emulator: 100₺ — $3</li>
-      </ul>
-      <button class="buy" onclick="go()">BUY</button>
-    </div>
-    <div class="price-box">
-      <h3>Weekly</h3>
-      <ul>
-        <li>Non-Root: 180₺ — $7</li>
-        <li>Root: 150₺ — $5</li>
-        <li>Emulator: 160₺ — $5</li>
-      </ul>
-      <button class="buy" onclick="go()">BUY</button>
-    </div>
-    <div class="price-box">
-      <h3>Monthly</h3>
-      <ul>
-        <li>Non-Root: 550₺ — $20</li>
-        <li>Root: 450₺ — $15</li>
-        <li>Emulator: 450₺ — $15</li>
-      </ul>
-      <button class="buy" onclick="go()">BUY</button>
-    </div>
-  </div>
-</div><div class="footer">All purchase buttons redirect to Discord.</div>
-</div><script>
-function go(){ window.location.href='https://discord.gg/jCbKykczSS'; }
-// intro timing
-setTimeout(()=>{
-  document.getElementById('intro').style.display='none';
-  document.getElementById('app').style.display='block';
-},3000);
-</script></body>
-        </html>
+
+  <a class="buy" href="https://discord.gg/jCbKykczSS" target="_blank">BUY</a>
+</div>
+
+</div>
+
+<script>
+const btn=document.getElementById("soundToggle");
+const audio=document.getElementById("introSound");
+let on=false;
+btn.onclick=()=>{
+  on=!on;
+  btn.textContent=on?"🔊":"🔇";
+  on?audio.play():audio.pause();
+};
+</script>
+
+</body>
+</html>

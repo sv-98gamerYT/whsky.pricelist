@@ -1,113 +1,104 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Game Store</title>
+<title>Store</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: Inter, system-ui, sans-serif;
+*{
+  box-sizing:border-box;
+  font-family:Inter,system-ui,sans-serif
 }
-
-body {
-  margin: 0;
-  min-height: 100vh;
+body{
+  margin:0;
+  min-height:100vh;
   background:
-    radial-gradient(circle at top, #2a0a4a 0%, #0b0215 55%, #050008 100%);
-  color: #fff;
+    radial-gradient(circle at top,#2b0d4f 0%,#0c0218 55%,#050008 100%);
+  color:#fff
 }
-
-/* container */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px 80px;
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px 90px
 }
-
-/* title */
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 28px;
-  letter-spacing: 1px;
+h1{
+  text-align:center;
+  margin-bottom:35px;
+  font-size:26px;
+  letter-spacing:1px
 }
-
-/* grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+.section{margin-top:55px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px
 }
-
-/* cards */
-.card {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 22px;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 0 25px rgba(0,255,200,0.15);
-  transition: 0.25s;
+.card{
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(14px);
+  border-radius:18px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 25px rgba(0,255,200,.15);
+  transition:.25s
 }
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 45px rgba(0,255,200,0.35);
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 45px rgba(0,255,200,.35)
 }
-
-.card h2 {
-  margin: 0 0 10px;
-  font-size: 20px;
+.card h2{
+  margin:0 0 10px;
+  font-size:20px
 }
-
-.card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.9;
+.card ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  font-size:14px;
+  opacity:.9
 }
-
-.card ul li {
-  margin-bottom: 6px;
+.card ul li{margin-bottom:6px}
+.buy{
+  margin-top:18px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:14px;
+  color:#000;
+  background:linear-gradient(90deg,#00ffd5,#00ffa2)
 }
-
-/* buy button */
-.buy {
-  margin-top: 18px;
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 30px;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 14px;
-  color: #000;
-  background: linear-gradient(90deg,#00ffd5,#00ffa2);
+.buy.pink{
+  background:linear-gradient(90deg,#b46cff,#ff77e9)
 }
-
-.buy.pink {
-  background: linear-gradient(90deg,#b46cff,#ff77e9);
+.payments{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  opacity:.9
 }
-
-/* section divider */
-.section {
-  margin-top: 60px;
+.payments span{
+  background:rgba(255,255,255,.08);
+  padding:10px 16px;
+  border-radius:20px;
+  font-size:13px;
+  border:1px solid rgba(255,255,255,.15)
 }
-
-/* footer */
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding: 12px;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(10px);
-  font-size: 13px;
-  opacity: 0.8;
+footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  text-align:center;
+  padding:12px;
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(10px);
+  font-size:13px;
+  opacity:.8
 }
 </style>
 </head>
@@ -115,13 +106,14 @@ footer {
 <body>
 
 <div class="container">
-  <h1>🎮 Game Store (External)</h1>
+
+  <h1>🎮 External</h1>
 
   <div class="grid">
     <div class="card">
       <h2>Daily</h2>
       <ul>
-        <li>Non-Root — $7</li>
+        <li>NoRoot (Need vPhoneOS VIP) — $7</li>
         <li>Root — $5</li>
         <li>Emulator — $7</li>
       </ul>
@@ -131,7 +123,7 @@ footer {
     <div class="card">
       <h2>Weekly</h2>
       <ul>
-        <li>Non-Root — $20</li>
+        <li>NoRoot (Need vPhoneOS VIP) — $20</li>
         <li>Root — $15</li>
         <li>Emulator — $20</li>
       </ul>
@@ -141,16 +133,26 @@ footer {
     <div class="card">
       <h2>Monthly</h2>
       <ul>
-        <li>Non-Root — $40</li>
+        <li>NoRoot (Need vPhoneOS VIP) — $40</li>
         <li>Root — $25</li>
         <li>Emulator — $40</li>
+      </ul>
+      <button class="buy" onclick="goDiscord()">BUY</button>
+    </div>
+
+    <div class="card">
+      <h2>Lifetime</h2>
+      <ul>
+        <li>NoRoot (Need vPhoneOS VIP) — $90</li>
+        <li>Root — $80</li>
+        <li>Emulator — $90</li>
       </ul>
       <button class="buy" onclick="goDiscord()">BUY</button>
     </div>
   </div>
 
   <div class="section">
-    <h1>🔒 Internal Access</h1>
+    <h1>🔒 Internal</h1>
 
     <div class="grid">
       <div class="card">
@@ -165,7 +167,7 @@ footer {
       <div class="card">
         <h2>Weekly</h2>
         <ul>
-          <li>Non-Root — $10</li>
+          <li>NoRoot (Need vPhoneOS VIP) — $10</li>
           <li>Root — $5</li>
           <li>Emulator — $7</li>
         </ul>
@@ -175,7 +177,7 @@ footer {
       <div class="card">
         <h2>Monthly</h2>
         <ul>
-          <li>Non-Root — $20</li>
+          <li>NoRoot (Need vPhoneOS VIP) — $20</li>
           <li>Root — $15</li>
           <li>Emulator — $17</li>
         </ul>
@@ -183,17 +185,27 @@ footer {
       </div>
     </div>
   </div>
+
+  <div class="section">
+    <h1>💳 Payment Methods</h1>
+    <div class="payments">
+      <span>💸 Crypto</span>
+      <span>💳 Credit Card</span>
+      <span>🪙 USDT</span>
+      <span>🎁 Gift Card</span>
+      <span>📱 Mobile Payment</span>
+    </div>
+  </div>
+
 </div>
 
-<footer>
-  © 2026 Game Store — All rights reserved
-</footer>
+<footer>© 2026 Store — All Rights Reserved</footer>
 
 <script>
-function goDiscord() {
-  window.location.href = "https://discord.gg/INVITEKODUN";
+function goDiscord(){
+  window.location.href="https://discord.gg/INVITEKODUN";
 }
 </script>
 
 </body>
-</html>
+  </html>
